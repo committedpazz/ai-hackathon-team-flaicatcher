@@ -6,6 +6,14 @@ export const LessonContentType = {
 
 export type LessonContentType = (typeof LessonContentType)[keyof typeof LessonContentType];
 
+export const TrainingStatus = {
+	DRAFT: "DRAFT",
+	PUBLISHED: "PUBLISHED",
+	ARCHIVED: "ARCHIVED",
+} as const;
+
+export type TrainingStatus = (typeof TrainingStatus)[keyof typeof TrainingStatus];
+
 export interface LessonDto {
 	id: string;
 	chapterId: string;
@@ -39,6 +47,7 @@ export interface TrainingDetailDto {
 	description: string;
 	level: string;
 	language: string;
+	status: TrainingStatus;
 	chapters: ChapterDto[];
 	progressPercentage: number;
 }
@@ -46,4 +55,53 @@ export interface TrainingDetailDto {
 export interface CompleteLessonResponse {
 	lessonId: string;
 	completedAt: string;
+}
+
+export interface AuthoredTrainingSummaryDto {
+	id: string;
+	title: string;
+	description: string;
+	level: string;
+	language: string;
+	status: TrainingStatus;
+	chapterCount: number;
+	lessonCount: number;
+}
+
+export interface CreateTrainingRequest {
+	title: string;
+	description: string;
+	level: string;
+	language: string;
+}
+
+export interface UpdateTrainingRequest {
+	title?: string;
+	description?: string;
+	level?: string;
+	language?: string;
+}
+
+export interface CreateChapterRequest {
+	title: string;
+	order: number;
+}
+
+export interface UpdateChapterRequest {
+	title?: string;
+	order?: number;
+}
+
+export interface CreateLessonRequest {
+	title: string;
+	order: number;
+	contentType: LessonContentType;
+	contentBody: string;
+}
+
+export interface UpdateLessonRequest {
+	title?: string;
+	order?: number;
+	contentType?: LessonContentType;
+	contentBody?: string;
 }

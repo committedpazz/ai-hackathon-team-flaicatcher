@@ -8,11 +8,11 @@ async function main(): Promise<void> {
 
 	const learner = await prisma.user.upsert({
 		where: { username: "learner1" },
-		update: { passwordHash },
+		update: { passwordHash, roles: ["LEARNER", "TRAINER"] },
 		create: {
 			username: "learner1",
 			passwordHash,
-			roles: ["LEARNER"],
+			roles: ["LEARNER", "TRAINER"],
 		},
 	});
 
@@ -21,6 +21,12 @@ async function main(): Promise<void> {
 	});
 
 	if (existingTraining) {
+		if (existingTraining.createdByUserId !== learner.id) {
+			await prisma.training.update({
+				where: { id: existingTraining.id },
+				data: { createdByUserId: learner.id },
+			});
+		}
 		console.log(`Seed skipped: training already exists (id=${existingTraining.id}).`);
 		console.log(`Seeded learner: username=learner1 password=Passw0rd! (id=${learner.id})`);
 		return;
@@ -33,6 +39,7 @@ async function main(): Promise<void> {
 			status: "PUBLISHED",
 			level: "Junior",
 			language: "nl",
+			createdByUserId: learner.id,
 			chapters: {
 				create: [
 					{

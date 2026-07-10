@@ -55,6 +55,7 @@ export class TrainingsService {
 			description: training.description,
 			level: training.level,
 			language: training.language,
+			status: training.status,
 			progressPercentage,
 			chapters: training.chapters.map(chapter => ({
 				id: chapter.id,

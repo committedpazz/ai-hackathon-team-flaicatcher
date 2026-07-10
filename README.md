@@ -45,6 +45,10 @@ Open http://localhost:5173 and log in with the seeded learner account:
 - **Username:** `learner1`
 - **Password:** `Passw0rd!`
 
+This account has both the `LEARNER` and `TRAINER` roles (hybrid role, per the
+spec): use "My trainings" to view/complete trainings as a learner, or "My
+authored trainings" to create and edit trainings as a trainer.
+
 ## Project structure
 
 ```

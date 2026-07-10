@@ -32,6 +32,7 @@ model User {
   deactivatedAt       DateTime?
   passwordResetTokens PasswordResetToken[]
   lessonProgress      LessonProgress[]
+  authoredTrainings   Training[]           @relation("TrainingAuthor")
 }
 
 model PasswordResetToken {
@@ -45,15 +46,18 @@ model PasswordResetToken {
 }
 
 model Training {
-  id          String         @id @default(cuid())
-  title       String
-  description String
-  status      TrainingStatus @default(DRAFT)
-  level       String
-  language    String
-  chapters    Chapter[]
-  createdAt   DateTime       @default(now())
+  id              String         @id @default(cuid())
+  title           String
+  description     String
+  status          TrainingStatus @default(DRAFT)
+  level           String
+  language        String
+  chapters        Chapter[]
+  createdAt       DateTime       @default(now())
+  createdByUserId String?
+  createdBy       User?          @relation("TrainingAuthor", fields: [createdByUserId], references: [id])
 }
+
 
 model Chapter {
   id         String   @id @default(cuid())

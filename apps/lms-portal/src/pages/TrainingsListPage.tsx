@@ -22,6 +22,11 @@ export function TrainingsListPage(): React.JSX.Element {
 				<h1>My trainings</h1>
 				<div className="user-info">
 					<span>Logged in as {user?.username}</span>
+					{user?.roles.includes("TRAINER") && (
+						<Link className="muted-link" to="/authoring">
+							My authored trainings
+						</Link>
+					)}
 					<button className="button button-secondary" type="button" onClick={() => void logout()}>
 						Log out
 					</button>
