@@ -22,27 +22,31 @@ export function ForgotPasswordPage(): React.JSX.Element {
 
 	if (isSubmitted) {
 		return (
-			<main>
+			<main className="card">
 				<h1>Forgot password</h1>
 				<p>If an account with that username exists, a reset link has been sent.</p>
-				<Link to="/login">Back to login</Link>
+				<Link className="muted-link" to="/login">
+					Back to login
+				</Link>
 			</main>
 		);
 	}
 
 	return (
-		<main>
+		<main className="card">
 			<h1>Forgot password</h1>
-			<form onSubmit={event => void handleSubmit(event)}>
+			<form className="form" onSubmit={event => void handleSubmit(event)}>
 				<label>
 					Username
 					<input value={username} onChange={event => setUsername(event.target.value)} required />
 				</label>
-				<button type="submit" disabled={isSubmitting}>
+				<button className="button" type="submit" disabled={isSubmitting}>
 					{isSubmitting ? "Sending..." : "Send reset link"}
 				</button>
 			</form>
-			<Link to="/login">Back to login</Link>
+			<Link className="muted-link" to="/login">
+				Back to login
+			</Link>
 		</main>
 	);
 }

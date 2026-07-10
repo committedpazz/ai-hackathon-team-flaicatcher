@@ -11,16 +11,18 @@ import { TrainingViewerPage } from "./pages/TrainingViewerPage";
 
 function App(): React.JSX.Element {
 	return (
-		<Routes>
-			<Route path="/" element={<Navigate to="/trainings" replace />} />
-			<Route path="/login" element={<LoginPage />} />
-			<Route path="/forgot-password" element={<ForgotPasswordPage />} />
-			<Route path="/reset-password/:token" element={<ResetPasswordPage />} />
-			<Route element={<ProtectedRoute />}>
-				<Route path="/trainings" element={<TrainingsListPage />} />
-				<Route path="/trainings/:trainingId" element={<TrainingViewerPage />} />
-			</Route>
-		</Routes>
+		<div className="app">
+			<Routes>
+				<Route path="/" element={<Navigate to="/trainings" replace />} />
+				<Route path="/login" element={<LoginPage />} />
+				<Route path="/forgot-password" element={<ForgotPasswordPage />} />
+				<Route path="/reset-password/:token" element={<ResetPasswordPage />} />
+				<Route element={<ProtectedRoute />}>
+					<Route path="/trainings" element={<TrainingsListPage />} />
+					<Route path="/trainings/:trainingId" element={<TrainingViewerPage />} />
+				</Route>
+			</Routes>
+		</div>
 	);
 }
 

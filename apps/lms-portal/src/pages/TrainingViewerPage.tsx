@@ -66,21 +66,25 @@ export function TrainingViewerPage(): React.JSX.Element {
 	}
 
 	return (
-		<main style={{ display: "flex", gap: "2rem" }}>
-			<nav style={{ minWidth: "220px" }}>
-				<p>
-					<Link to="/trainings">← My trainings</Link>
-				</p>
+		<main className="viewer">
+			<nav className="viewer-nav">
+				<Link className="back-link" to="/trainings">
+					← My trainings
+				</Link>
 				<h2>{training.title}</h2>
 				<progress value={training.progressPercentage} max={100} />
-				<span> {training.progressPercentage}%</span>
+				<p className="progress-label">{training.progressPercentage}% complete</p>
 				{training.chapters.map(chapter => (
 					<div key={chapter.id}>
 						<h3>{chapter.title}</h3>
-						<ul>
+						<ul className="lesson-list">
 							{chapter.lessons.map(lesson => (
 								<li key={lesson.id}>
-									<button type="button" onClick={() => setSelectedLessonId(lesson.id)}>
+									<button
+										type="button"
+										className={lesson.id === selectedLessonId ? "active" : ""}
+										onClick={() => setSelectedLessonId(lesson.id)}
+									>
 										{lesson.completedAt ? "✅" : "⬜"} {lesson.title}
 									</button>
 								</li>
@@ -89,15 +93,16 @@ export function TrainingViewerPage(): React.JSX.Element {
 					</div>
 				))}
 			</nav>
-			<section>
+			<section className="viewer-content">
 				{selectedLesson ? (
 					<>
-						<p>
+						<p className="breadcrumb">
 							{training.title} / {selectedLesson.title}
 						</p>
 						<h1>{selectedLesson.title}</h1>
-						<p>{selectedLesson.contentBody}</p>
+						<p className="lesson-body">{selectedLesson.contentBody}</p>
 						<button
+							className="button"
 							type="button"
 							disabled={isSaving || Boolean(selectedLesson.completedAt)}
 							onClick={() => void handleMarkComplete()}

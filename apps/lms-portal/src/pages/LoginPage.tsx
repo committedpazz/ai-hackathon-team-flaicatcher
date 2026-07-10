@@ -28,9 +28,9 @@ export function LoginPage(): React.JSX.Element {
 	};
 
 	return (
-		<main>
+		<main className="card">
 			<h1>Log in</h1>
-			<form onSubmit={event => void handleSubmit(event)}>
+			<form className="form" onSubmit={event => void handleSubmit(event)}>
 				<label>
 					Username
 					<input value={username} onChange={event => setUsername(event.target.value)} required />
@@ -39,14 +39,18 @@ export function LoginPage(): React.JSX.Element {
 					Password
 					<input type="password" value={password} onChange={event => setPassword(event.target.value)} required />
 				</label>
-				{error && <p role="alert">{error}</p>}
-				<button type="submit" disabled={isSubmitting}>
+				{error && (
+					<p className="alert" role="alert">
+						{error}
+					</p>
+				)}
+				<button className="button" type="submit" disabled={isSubmitting}>
 					{isSubmitting ? "Logging in..." : "Log in"}
 				</button>
 			</form>
-			<p>
-				<Link to="/forgot-password">Forgot password?</Link>
-			</p>
+			<Link className="muted-link" to="/forgot-password">
+				Forgot password?
+			</Link>
 		</main>
 	);
 }

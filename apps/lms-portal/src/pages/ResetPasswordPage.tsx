@@ -29,9 +29,9 @@ export function ResetPasswordPage(): React.JSX.Element {
 	};
 
 	return (
-		<main>
+		<main className="card">
 			<h1>Reset password</h1>
-			<form onSubmit={event => void handleSubmit(event)}>
+			<form className="form" onSubmit={event => void handleSubmit(event)}>
 				<label>
 					New password
 					<input
@@ -42,12 +42,18 @@ export function ResetPasswordPage(): React.JSX.Element {
 						required
 					/>
 				</label>
-				{error && <p role="alert">{error}</p>}
-				<button type="submit" disabled={isSubmitting}>
+				{error && (
+					<p className="alert" role="alert">
+						{error}
+					</p>
+				)}
+				<button className="button" type="submit" disabled={isSubmitting}>
 					{isSubmitting ? "Saving..." : "Set new password"}
 				</button>
 			</form>
-			<Link to="/login">Back to login</Link>
+			<Link className="muted-link" to="/login">
+				Back to login
+			</Link>
 		</main>
 	);
 }

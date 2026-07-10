@@ -18,24 +18,26 @@ export function TrainingsListPage(): React.JSX.Element {
 
 	return (
 		<main>
-			<header>
+			<header className="page-header">
 				<h1>My trainings</h1>
-				<p>
-					Logged in as {user?.username}
-					<button type="button" onClick={() => void logout()}>
+				<div className="user-info">
+					<span>Logged in as {user?.username}</span>
+					<button className="button button-secondary" type="button" onClick={() => void logout()}>
 						Log out
 					</button>
-				</p>
+				</div>
 			</header>
 			{!trainings && <p>Loading...</p>}
 			{trainings && trainings.length === 0 && <p>No trainings available yet.</p>}
-			<ul>
+			<ul className="trainings-list">
 				{trainings?.map(training => (
-					<li key={training.id}>
+					<li className="training-card" key={training.id}>
 						<Link to={`/trainings/${training.id}`}>{training.title}</Link>
 						<p>{training.description}</p>
-						<progress value={training.progressPercentage} max={100} />
-						<span>{training.progressPercentage}%</span>
+						<div className="progress-row">
+							<progress value={training.progressPercentage} max={100} />
+							<span>{training.progressPercentage}%</span>
+						</div>
 					</li>
 				))}
 			</ul>
