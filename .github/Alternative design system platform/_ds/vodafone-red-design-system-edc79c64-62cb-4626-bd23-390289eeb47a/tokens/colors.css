@@ -1,0 +1,33 @@
+/* ─── Vodafone Red — Color tokens ────────────────────────────────────────
+   Red + ink + grayscale only. No second accent colour, ever. */
+:root {
+  /* Brand / accent */
+  --vf-primary: #e60000;        /* Vodafone Red — every primary CTA + speechmark orb */
+  --vf-on-primary: #ffffff;     /* text/icon on red */
+
+  /* Surface */
+  --vf-canvas: #ffffff;         /* default light content background */
+  --vf-canvas-soft: #f2f2f2;    /* near-white tint — badge-chip / soft panels */
+  --vf-ink: #25282b;            /* near-black — dark hero, nav, footer + body text on light */
+
+  /* Text */
+  --vf-body: #7e7e7e;           /* secondary body / captions / metadata */
+  --vf-mute: #bebebe;           /* lowest priority — placeholders, faint links */
+  --vf-on-dark: #ffffff;        /* all text on ink surfaces */
+
+  /* ── Semantic aliases ── */
+  --text-heading: var(--vf-ink);
+  --text-body: var(--vf-body);
+  --text-mute: var(--vf-mute);
+  --text-on-dark: var(--vf-on-dark);
+  --text-on-primary: var(--vf-on-primary);
+
+  --surface-canvas: var(--vf-canvas);
+  --surface-soft: var(--vf-canvas-soft);
+  --surface-ink: var(--vf-ink);
+  --surface-primary: var(--vf-primary);
+
+  --border-ink: var(--vf-ink);
+  --border-mute: var(--vf-mute);
+  --border-on-dark: rgba(255, 255, 255, 0.25); /* divider-on-dark @ 25% */
+}

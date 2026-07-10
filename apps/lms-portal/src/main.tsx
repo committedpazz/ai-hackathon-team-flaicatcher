@@ -1,3 +1,4 @@
+import "./design-system/tokens.css";
 import "./index.css";
 
 import { StrictMode } from "react";

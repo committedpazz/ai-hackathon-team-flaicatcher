@@ -3,6 +3,7 @@ import type { FormEvent } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 
 import { apiClient, ApiError } from "../api/client";
+import { Button, Input } from "../design-system";
 
 export function ResetPasswordPage(): React.JSX.Element {
 	const { token } = useParams<{ token: string }>();
@@ -32,25 +33,23 @@ export function ResetPasswordPage(): React.JSX.Element {
 		<main className="card">
 			<h1>Reset password</h1>
 			<form className="form" onSubmit={event => void handleSubmit(event)}>
-				<label>
-					New password
-					<input
-						type="password"
-						minLength={8}
-						value={newPassword}
-						onChange={event => setNewPassword(event.target.value)}
-						autoComplete="new-password"
-						required
-					/>
-				</label>
+				<Input
+					label="New password"
+					type="password"
+					minLength={8}
+					value={newPassword}
+					onChange={event => setNewPassword(event.target.value)}
+					autoComplete="new-password"
+					required
+				/>
 				{error && (
 					<p className="alert" role="alert">
 						{error}
 					</p>
 				)}
-				<button className="button" type="submit" disabled={isSubmitting}>
+				<Button type="submit" disabled={isSubmitting}>
 					{isSubmitting ? "Saving..." : "Set new password"}
-				</button>
+				</Button>
 			</form>
 			<Link className="muted-link" to="/login">
 				Back to login

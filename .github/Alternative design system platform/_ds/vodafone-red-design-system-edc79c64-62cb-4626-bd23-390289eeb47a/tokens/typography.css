@@ -1,0 +1,39 @@
+/* ─── Vodafone Red — Typography tokens ───────────────────────────────────
+   A single family carries the whole system. Weight 800 UPPERCASE = hero
+   voice; weight 300 = the calm secondary voice. */
+:root {
+  --vf-font: 'Inter', 'Vodafone', 'Vodafone Rg', 'Helvetica Neue', Arial, sans-serif;
+  --font-display: var(--vf-font);
+  --font-body: var(--vf-font);
+
+  /* Weights */
+  --vf-w-light: 300;   /* @kind font */
+  --vf-w-regular: 400; /* @kind font */
+  --vf-w-medium: 600;  /* @kind font */
+  --vf-w-bold: 700;    /* @kind font */
+  --vf-w-heavy: 800;   /* @kind font */
+
+  /* ── Type role sizes / leading / tracking ── */
+  /* Display — heavy uppercase hero voice */
+  --vf-display-hero-size: 144px;  --vf-display-hero-lh: 114px;  --vf-display-hero-ls: -1px;
+  --vf-display-xxl-size: 126px;   --vf-display-xxl-lh: 113px;   --vf-display-xxl-ls: -1px;
+  --vf-display-xl-size: 90px;     --vf-display-xl-lh: 84px;     --vf-display-xl-ls: 0; /* @kind other */
+  /* Display — light secondary voice */
+  --vf-display-lg-size: 48px;     --vf-display-lg-lh: 52px;
+  --vf-display-md-size: 40px;     --vf-display-md-lh: 44px;
+  /* Display — bold card headings */
+  --vf-display-sm-size: 32px;     --vf-display-sm-lh: 40px;
+  --vf-display-xs-size: 24px;     --vf-display-xs-lh: 24px;
+
+  --vf-eyebrow-size: 16px;        --vf-eyebrow-lh: 24px;
+
+  /* Body */
+  --vf-body-lg-size: 22px;        --vf-body-lg-lh: 24px;
+  --vf-body-md-size: 18px;        --vf-body-md-lh: 28px;
+  --vf-body-sm-size: 16px;        --vf-body-sm-lh: 20px;
+
+  /* Caption */
+  --vf-caption-size: 14px;        --vf-caption-lh: 16px;
+  --vf-caption-strong-lh: 21px;
+  --vf-caption-up-size: 12px;     --vf-caption-up-lh: 16px;   --vf-caption-up-ls: 0.57px;
+}

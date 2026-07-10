@@ -3,6 +3,7 @@ import type { FormEvent } from "react";
 import { Link } from "react-router-dom";
 
 import { apiClient } from "../api/client";
+import { Button, Input } from "../design-system";
 
 export function ForgotPasswordPage(): React.JSX.Element {
 	const [username, setUsername] = useState("");
@@ -36,13 +37,10 @@ export function ForgotPasswordPage(): React.JSX.Element {
 		<main className="card">
 			<h1>Forgot password</h1>
 			<form className="form" onSubmit={event => void handleSubmit(event)}>
-				<label>
-					Username
-					<input value={username} onChange={event => setUsername(event.target.value)} required />
-				</label>
-				<button className="button" type="submit" disabled={isSubmitting}>
+				<Input label="Username" value={username} onChange={event => setUsername(event.target.value)} required />
+				<Button type="submit" disabled={isSubmitting}>
 					{isSubmitting ? "Sending..." : "Send reset link"}
-				</button>
+				</Button>
 			</form>
 			<Link className="muted-link" to="/login">
 				Back to login

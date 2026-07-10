@@ -3,8 +3,11 @@ import { useEffect, useMemo, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 
 import { apiClient } from "../api/client";
+import { useAuth } from "../auth/useAuth";
+import { AppHeader, Badge, Button } from "../design-system";
 
 export function TrainingViewerPage(): React.JSX.Element {
+	const { user, logout } = useAuth();
 	const { trainingId } = useParams<{ trainingId: string }>();
 	const [training, setTraining] = useState<TrainingDetailDto | null>(null);
 	const [selectedLessonId, setSelectedLessonId] = useState<string | null>(null);
@@ -66,54 +69,59 @@ export function TrainingViewerPage(): React.JSX.Element {
 	}
 
 	return (
-		<main className="viewer">
-			<nav className="viewer-nav">
-				<Link className="back-link" to="/trainings">
-					← My trainings
-				</Link>
-				<h2>{training.title}</h2>
-				<progress value={training.progressPercentage} max={100} />
-				<p className="progress-label">{training.progressPercentage}% complete</p>
-				{training.chapters.map(chapter => (
-					<div key={chapter.id}>
-						<h3>{chapter.title}</h3>
-						<ul className="lesson-list">
-							{chapter.lessons.map(lesson => (
-								<li key={lesson.id}>
-									<button
-										type="button"
-										className={lesson.id === selectedLessonId ? "active" : ""}
-										onClick={() => setSelectedLessonId(lesson.id)}
-									>
-										{lesson.completedAt ? "✅" : "⬜"} {lesson.title}
-									</button>
-								</li>
-							))}
-						</ul>
-					</div>
-				))}
-			</nav>
-			<section className="viewer-content">
-				{selectedLesson ? (
-					<>
-						<p className="breadcrumb">
-							{training.title} / {selectedLesson.title}
-						</p>
-						<h1>{selectedLesson.title}</h1>
-						<p className="lesson-body">{selectedLesson.contentBody}</p>
-						<button
-							className="button"
-							type="button"
-							disabled={isSaving || Boolean(selectedLesson.completedAt)}
-							onClick={() => void handleMarkComplete()}
-						>
-							{selectedLesson.completedAt ? "Completed" : isSaving ? "Saving..." : "Mark complete"}
-						</button>
-					</>
-				) : (
-					<p>Select a lesson to get started.</p>
-				)}
-			</section>
+		<main>
+			{user && <AppHeader user={user} onLogout={() => void logout()} />}
+			<div className="viewer">
+				<nav className="viewer-nav">
+					<Link className="back-link" to="/trainings">
+						← My trainings
+					</Link>
+					<h2>{training.title}</h2>
+					<progress value={training.progressPercentage} max={100} />
+					<p className="progress-label">{training.progressPercentage}% complete</p>
+					{training.chapters.map(chapter => (
+						<div key={chapter.id}>
+							<h3>{chapter.title}</h3>
+							<ul className="lesson-list">
+								{chapter.lessons.map(lesson => (
+									<li key={lesson.id}>
+										<button
+											type="button"
+											className={lesson.id === selectedLessonId ? "active" : ""}
+											onClick={() => setSelectedLessonId(lesson.id)}
+											style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 8 }}
+										>
+											<span>{lesson.title}</span>
+											<Badge tone={lesson.completedAt ? "green-dark" : "ink"} style={{ fontSize: 11 }}>
+												{lesson.completedAt ? "Done" : "To do"}
+											</Badge>
+										</button>
+									</li>
+								))}
+							</ul>
+						</div>
+					))}
+				</nav>
+				<section className="viewer-content">
+					{selectedLesson ? (
+						<>
+							<p className="breadcrumb">
+								{training.title} / {selectedLesson.title}
+							</p>
+							<h1>{selectedLesson.title}</h1>
+							<p className="lesson-body">{selectedLesson.contentBody}</p>
+							<Button
+								disabled={isSaving || Boolean(selectedLesson.completedAt)}
+								onClick={() => void handleMarkComplete()}
+							>
+								{selectedLesson.completedAt ? "Completed" : isSaving ? "Saving..." : "Mark complete"}
+							</Button>
+						</>
+					) : (
+						<p>Select a lesson to get started.</p>
+					)}
+				</section>
+			</div>
 		</main>
 	);
 }

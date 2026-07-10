@@ -2,33 +2,32 @@
 	text-align: left;
 	width: 100%;
 	box-sizing: border-box;
-	padding: 32px 24px 64px;
+	padding-bottom: 64px;
 }
 
 .app h1 {
-	font-size: 32px;
-	letter-spacing: -0.5px;
+	font-size: var(--fs-h2);
+	letter-spacing: -0.02em;
 	margin: 0 0 24px;
 }
 
 .app h2 {
-	font-size: 20px;
+	font-size: var(--fs-h3);
 	margin: 0 0 8px;
 }
 
 .app h3 {
 	font-size: 16px;
 	margin: 16px 0 8px;
-	color: var(--text-h);
+	color: var(--text-heading);
 }
 
 .card {
 	max-width: 400px;
-	margin: 48px auto 0;
-	padding: 32px;
-	border: 1px solid var(--border);
-	border-radius: 12px;
-	box-shadow: var(--shadow);
+	margin: 64px auto 0;
+	padding: var(--card-pad);
+	background: var(--surface-card);
+	border-radius: var(--radius-card);
 }
 
 .form {
@@ -42,53 +41,26 @@
 	flex-direction: column;
 	gap: 6px;
 	font-size: 14px;
-	color: var(--text-h);
+	color: var(--text-heading);
 }
 
 .form input {
 	font: inherit;
-	padding: 10px 12px;
-	border: 1px solid var(--border);
-	border-radius: 8px;
-	background: var(--bg);
-	color: var(--text-h);
+	font-family: var(--font-sans);
+	padding: 12px 16px;
+	border: 1.5px solid var(--ce-divider-on-light);
+	border-radius: var(--radius-input);
+	background: #fff;
+	color: var(--ce-navy-700);
 }
 
 .form input:focus-visible {
-	outline: 2px solid var(--accent);
+	outline: 2px solid var(--ce-green-400);
 	outline-offset: 1px;
 }
 
-.button {
-	font: inherit;
-	font-weight: 500;
-	padding: 10px 16px;
-	border: none;
-	border-radius: 8px;
-	background: var(--accent);
-	color: #fff;
-	cursor: pointer;
-	transition:
-		opacity 0.2s,
-		background 0.2s;
-}
-
-.button:hover:not(:disabled) {
-	opacity: 0.9;
-}
-
-.button:disabled {
-	opacity: 0.5;
-	cursor: not-allowed;
-}
-
-.button-secondary {
-	background: var(--accent-bg);
-	color: var(--accent);
-}
-
 .alert {
-	color: #d92d20;
+	color: #d64545;
 	font-size: 14px;
 	margin: 0;
 }
@@ -97,29 +69,13 @@
 	display: inline-block;
 	margin-top: 16px;
 	font-size: 14px;
-}
-
-.page-header {
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	gap: 16px;
-	max-width: 960px;
-	margin: 0 auto 32px;
-}
-
-.page-header .user-info {
-	display: flex;
-	align-items: center;
-	gap: 12px;
-	font-size: 14px;
-	color: var(--text);
+	color: var(--ce-navy-700);
 }
 
 .trainings-list {
 	list-style: none;
 	margin: 0 auto;
-	padding: 0;
+	padding: 0 24px;
 	max-width: 960px;
 	display: flex;
 	flex-direction: column;
@@ -127,15 +83,15 @@
 }
 
 .training-card {
-	border: 1px solid var(--border);
-	border-radius: 12px;
-	padding: 20px 24px;
+	background: var(--surface-card);
+	border-radius: var(--radius-card);
+	padding: 24px var(--card-pad);
 }
 
 .training-card a {
 	font-size: 18px;
-	font-weight: 500;
-	color: var(--text-h);
+	font-weight: 700;
+	color: var(--text-heading);
 	text-decoration: none;
 }
 
@@ -145,7 +101,7 @@
 
 .training-card p {
 	margin: 8px 0 12px;
-	color: var(--text);
+	color: var(--text-body);
 	font-size: 14px;
 }
 
@@ -154,7 +110,7 @@
 	align-items: center;
 	gap: 10px;
 	font-size: 13px;
-	color: var(--text);
+	color: var(--text-body);
 }
 
 progress {
@@ -167,23 +123,24 @@ progress {
 }
 
 progress::-webkit-progress-bar {
-	background: var(--accent-bg);
+	background: var(--ce-gray-50);
 	border-radius: 4px;
 }
 
 progress::-webkit-progress-value {
-	background: var(--accent);
+	background: var(--ce-green-400);
 	border-radius: 4px;
 }
 
 progress::-moz-progress-bar {
-	background: var(--accent);
+	background: var(--ce-green-400);
 	border-radius: 4px;
 }
 
 .viewer {
 	max-width: 960px;
 	margin: 0 auto;
+	padding: 0 24px;
 	display: flex;
 	align-items: flex-start;
 	gap: 32px;
@@ -191,8 +148,8 @@ progress::-moz-progress-bar {
 
 .viewer-nav {
 	flex: 0 0 240px;
-	border: 1px solid var(--border);
-	border-radius: 12px;
+	background: var(--surface-card);
+	border-radius: var(--radius-card);
 	padding: 20px;
 	position: sticky;
 	top: 32px;
@@ -202,6 +159,7 @@ progress::-moz-progress-bar {
 	font-size: 13px;
 	display: inline-block;
 	margin-bottom: 12px;
+	color: var(--ce-navy-700);
 }
 
 .viewer-nav progress {
@@ -210,7 +168,7 @@ progress::-moz-progress-bar {
 
 .viewer-nav .progress-label {
 	font-size: 13px;
-	color: var(--text);
+	color: var(--text-body);
 }
 
 .lesson-list {
@@ -227,35 +185,36 @@ progress::-moz-progress-bar {
 	text-align: left;
 	background: transparent;
 	border: none;
-	border-radius: 6px;
+	border-radius: 8px;
 	padding: 8px 10px;
 	font: inherit;
+	font-family: var(--font-sans);
 	font-size: 14px;
-	color: var(--text-h);
+	color: var(--text-heading);
 	cursor: pointer;
 }
 
 .lesson-list button:hover {
-	background: var(--accent-bg);
+	background: var(--ce-gray-50);
 }
 
 .lesson-list button.active {
-	background: var(--accent-bg);
-	color: var(--accent);
-	font-weight: 500;
+	background: var(--ce-gray-50);
+	color: var(--ce-green-500);
+	font-weight: 600;
 }
 
 .viewer-content {
 	flex: 1 1 auto;
-	border: 1px solid var(--border);
-	border-radius: 12px;
+	background: var(--surface-card);
+	border-radius: var(--radius-card);
 	padding: 24px 32px;
 	min-width: 0;
 }
 
 .viewer-content .breadcrumb {
 	font-size: 13px;
-	color: var(--text);
+	color: var(--text-body);
 	margin-bottom: 8px;
 }
 

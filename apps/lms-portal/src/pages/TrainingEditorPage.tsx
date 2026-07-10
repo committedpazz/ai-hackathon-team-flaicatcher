@@ -5,8 +5,11 @@ import type { FormEvent } from "react";
 import { Link, useParams } from "react-router-dom";
 
 import { apiClient } from "../api/client";
+import { useAuth } from "../auth/useAuth";
+import { AppHeader, Badge, Button, Input } from "../design-system";
 
 export function TrainingEditorPage(): React.JSX.Element {
+	const { user, logout } = useAuth();
 	const { trainingId } = useParams<{ trainingId: string }>();
 	const [training, setTraining] = useState<TrainingDetailDto | null>(null);
 
@@ -26,22 +29,27 @@ export function TrainingEditorPage(): React.JSX.Element {
 	}
 
 	return (
-		<main className="viewer">
-			<nav className="viewer-nav">
-				<Link className="back-link" to="/authoring">
-					← My authored trainings
-				</Link>
-				<h2>{training.title}</h2>
-				<p className="progress-label">Status: {training.status}</p>
-			</nav>
-			<section className="viewer-content">
-				<TrainingMetadataForm training={training} trainingId={trainingId} onChanged={reload} />
-				<h3>Chapters</h3>
-				{training.chapters.map(chapter => (
-					<ChapterEditor key={chapter.id} chapter={chapter} onChanged={reload} />
-				))}
-				<AddChapterForm trainingId={trainingId} nextOrder={training.chapters.length + 1} onChanged={reload} />
-			</section>
+		<main>
+			{user && <AppHeader user={user} onLogout={() => void logout()} />}
+			<div className="viewer">
+				<nav className="viewer-nav">
+					<Link className="back-link" to="/authoring">
+						← My authored trainings
+					</Link>
+					<h2>{training.title}</h2>
+					<Badge tone={training.status === "PUBLISHED" ? "green-dark" : "ink"} style={{ fontSize: 11 }}>
+						{training.status === "PUBLISHED" ? "Published" : "Draft"}
+					</Badge>
+				</nav>
+				<section className="viewer-content">
+					<TrainingMetadataForm training={training} trainingId={trainingId} onChanged={reload} />
+					<h3>Chapters</h3>
+					{training.chapters.map(chapter => (
+						<ChapterEditor key={chapter.id} chapter={chapter} onChanged={reload} />
+					))}
+					<AddChapterForm trainingId={trainingId} nextOrder={training.chapters.length + 1} onChanged={reload} />
+				</section>
+			</div>
 		</main>
 	);
 }
@@ -85,35 +93,18 @@ function TrainingMetadataForm({
 
 	return (
 		<form className="form" onSubmit={event => void handleSave(event)}>
-			<label>
-				Title
-				<input value={title} onChange={event => setTitle(event.target.value)} required />
-			</label>
-			<label>
-				Description
-				<input value={description} onChange={event => setDescription(event.target.value)} required />
-			</label>
-			<label>
-				Level
-				<input value={level} onChange={event => setLevel(event.target.value)} required />
-			</label>
-			<label>
-				Language
-				<input value={language} onChange={event => setLanguage(event.target.value)} required />
-			</label>
+			<Input label="Title" value={title} onChange={event => setTitle(event.target.value)} required />
+			<Input label="Description" value={description} onChange={event => setDescription(event.target.value)} required />
+			<Input label="Level" value={level} onChange={event => setLevel(event.target.value)} required />
+			<Input label="Language" value={language} onChange={event => setLanguage(event.target.value)} required />
 			<div className="progress-row">
-				<button className="button" type="submit" disabled={isSaving}>
+				<Button type="submit" size="sm" disabled={isSaving}>
 					{isSaving ? "Saving..." : "Save"}
-				</button>
+				</Button>
 				{training.status === "DRAFT" && (
-					<button
-						className="button button-secondary"
-						type="button"
-						disabled={isPublishing}
-						onClick={() => void handlePublish()}
-					>
+					<Button variant="cream" size="sm" disabled={isPublishing} onClick={() => void handlePublish()}>
 						{isPublishing ? "Publishing..." : "Publish"}
-					</button>
+					</Button>
 				)}
 			</div>
 		</form>
@@ -150,32 +141,22 @@ function ChapterEditor({ chapter, onChanged }: { chapter: ChapterDto; onChanged:
 	return (
 		<div className="card" style={{ margin: "16px 0" }}>
 			<form className="form" onSubmit={event => void handleSave(event)}>
-				<label>
-					Chapter title
-					<input value={title} onChange={event => setTitle(event.target.value)} required />
-				</label>
-				<label>
-					Order
-					<input
-						type="number"
-						min={1}
-						value={order}
-						onChange={event => setOrder(Number(event.target.value))}
-						required
-					/>
-				</label>
+				<Input label="Chapter title" value={title} onChange={event => setTitle(event.target.value)} required />
+				<Input
+					label="Order"
+					type="number"
+					min={1}
+					value={order}
+					onChange={event => setOrder(Number(event.target.value))}
+					required
+				/>
 				<div className="progress-row">
-					<button className="button" type="submit" disabled={isSaving}>
+					<Button type="submit" size="sm" disabled={isSaving}>
 						{isSaving ? "Saving..." : "Save chapter"}
-					</button>
-					<button
-						className="button button-secondary"
-						type="button"
-						disabled={isDeleting}
-						onClick={() => void handleDelete()}
-					>
+					</Button>
+					<Button variant="cream" size="sm" disabled={isDeleting} onClick={() => void handleDelete()}>
 						{isDeleting ? "Deleting..." : "Delete chapter"}
-					</button>
+					</Button>
 				</div>
 			</form>
 
@@ -220,36 +201,26 @@ function LessonEditor({ lesson, onChanged }: { lesson: LessonDto; onChanged: () 
 	return (
 		<li>
 			<form className="form" onSubmit={event => void handleSave(event)}>
-				<label>
-					Lesson title
-					<input value={title} onChange={event => setTitle(event.target.value)} required />
-				</label>
-				<label>
-					Order
-					<input
-						type="number"
-						min={1}
-						value={order}
-						onChange={event => setOrder(Number(event.target.value))}
-						required
-					/>
-				</label>
+				<Input label="Lesson title" value={title} onChange={event => setTitle(event.target.value)} required />
+				<Input
+					label="Order"
+					type="number"
+					min={1}
+					value={order}
+					onChange={event => setOrder(Number(event.target.value))}
+					required
+				/>
 				<label>
 					Content
 					<textarea rows={3} value={contentBody} onChange={event => setContentBody(event.target.value)} required />
 				</label>
 				<div className="progress-row">
-					<button className="button" type="submit" disabled={isSaving}>
+					<Button type="submit" size="sm" disabled={isSaving}>
 						{isSaving ? "Saving..." : "Save lesson"}
-					</button>
-					<button
-						className="button button-secondary"
-						type="button"
-						disabled={isDeleting}
-						onClick={() => void handleDelete()}
-					>
+					</Button>
+					<Button variant="cream" size="sm" disabled={isDeleting} onClick={() => void handleDelete()}>
 						{isDeleting ? "Deleting..." : "Delete lesson"}
-					</button>
+					</Button>
 				</div>
 			</form>
 		</li>
@@ -284,17 +255,18 @@ function AddChapterForm({
 
 	return (
 		<form className="form card" onSubmit={event => void handleSubmit(event)}>
-			<label>
-				New chapter title
-				<input value={title} onChange={event => setTitle(event.target.value)} required />
-			</label>
-			<label>
-				Order
-				<input type="number" min={1} value={order} onChange={event => setOrder(Number(event.target.value))} required />
-			</label>
-			<button className="button" type="submit" disabled={isSubmitting}>
+			<Input label="New chapter title" value={title} onChange={event => setTitle(event.target.value)} required />
+			<Input
+				label="Order"
+				type="number"
+				min={1}
+				value={order}
+				onChange={event => setOrder(Number(event.target.value))}
+				required
+			/>
+			<Button type="submit" size="sm" disabled={isSubmitting}>
 				{isSubmitting ? "Adding..." : "Add chapter"}
-			</button>
+			</Button>
 		</form>
 	);
 }
@@ -334,21 +306,22 @@ function AddLessonForm({
 
 	return (
 		<form className="form" onSubmit={event => void handleSubmit(event)}>
-			<label>
-				New lesson title
-				<input value={title} onChange={event => setTitle(event.target.value)} required />
-			</label>
-			<label>
-				Order
-				<input type="number" min={1} value={order} onChange={event => setOrder(Number(event.target.value))} required />
-			</label>
+			<Input label="New lesson title" value={title} onChange={event => setTitle(event.target.value)} required />
+			<Input
+				label="Order"
+				type="number"
+				min={1}
+				value={order}
+				onChange={event => setOrder(Number(event.target.value))}
+				required
+			/>
 			<label>
 				Content
 				<textarea rows={3} value={contentBody} onChange={event => setContentBody(event.target.value)} required />
 			</label>
-			<button className="button" type="submit" disabled={isSubmitting}>
+			<Button type="submit" size="sm" disabled={isSubmitting}>
 				{isSubmitting ? "Adding..." : "Add lesson"}
-			</button>
+			</Button>
 		</form>
 	);
 }
