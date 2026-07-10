@@ -4,7 +4,7 @@ import { TrainingsController } from "./trainings.controller";
 import { TrainingsService } from "./trainings.service";
 
 @Module({
-    controllers: [TrainingsController],
-    providers: [TrainingsService],
+	controllers: [TrainingsController],
+	providers: [TrainingsService],
 })
-export class TrainingsModule { }
+export class TrainingsModule {}

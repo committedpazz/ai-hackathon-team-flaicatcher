@@ -59,14 +59,14 @@ docker-compose.yml  Local Postgres for development
 
 ## Common scripts (run from the repo root)
 
-| Script | Purpose |
-| --- | --- |
-| `npm run compile` | Type-check the whole monorepo (`tsc --build`) |
-| `npm run lint` | Lint the whole monorepo (oxlint, type-aware) |
-| `npm run format` / `format:check` | Format / check formatting (oxfmt) |
-| `npm run dev:api` / `dev:portal` | Start the API / portal dev servers |
-| `npm run db:migrate` | Apply Prisma migrations (prompts for a name on new changes) |
-| `npm run db:seed` | Seed the database with sample data |
+| Script                            | Purpose                                                     |
+| --------------------------------- | ----------------------------------------------------------- |
+| `npm run compile`                 | Type-check the whole monorepo (`tsc --build`)               |
+| `npm run lint`                    | Lint the whole monorepo (oxlint, type-aware)                |
+| `npm run format` / `format:check` | Format / check formatting (oxfmt)                           |
+| `npm run dev:api` / `dev:portal`  | Start the API / portal dev servers                          |
+| `npm run db:migrate`              | Apply Prisma migrations (prompts for a name on new changes) |
+| `npm run db:seed`                 | Seed the database with sample data                          |
 
 Run `npm run lint` and `npm run compile` after any meaningful change — see
 [.github/instructions/validation.instructions.md](.github/instructions/validation.instructions.md).
