@@ -1,15 +1,15 @@
 /* ─── Vodafone Red — Spacing tokens ──────────────────────────────────────
    Base unit 4px. */
 :root {
-  --vf-space-xxs: 2px;
-  --vf-space-xs: 4px;
-  --vf-space-sm: 8px;
-  --vf-space-md: 12px;
-  --vf-space-lg: 16px;
-  --vf-space-xl: 20px;
-  --vf-space-2xl: 24px;
-  --vf-space-3xl: 32px;
+	--vf-space-xxs: 2px;
+	--vf-space-xs: 4px;
+	--vf-space-sm: 8px;
+	--vf-space-md: 12px;
+	--vf-space-lg: 16px;
+	--vf-space-xl: 20px;
+	--vf-space-2xl: 24px;
+	--vf-space-3xl: 32px;
 
-  /* Section gutter used on hero / content / footer bands */
-  --vf-gutter: var(--vf-space-3xl);
+	/* Section gutter used on hero / content / footer bands */
+	--vf-gutter: var(--vf-space-3xl);
 }

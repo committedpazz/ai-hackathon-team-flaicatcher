@@ -1,29 +1,49 @@
 <!-- @dsCard group="Components" viewport="700x240" subtitle="Input, label, hint & invalid" name="Inputs & badges" -->
-<!DOCTYPE html>
+<!doctype html>
 <html>
-<head><meta charset="utf-8">
-<link rel="stylesheet" href="../../styles.css">
-<script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
-<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
-<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-<script src="../../_ds_bundle.js"></script>
-<style>body{margin:0;padding:28px;background:#fff;font-family:var(--font-sans)}
-#r{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start}</style></head>
-<body>
-<div id="r"></div>
-<script type="text/plain" id="jsxsrc">
-const NS = Object.values(window).find(v => v && typeof v === "object" && v.Button && v.Input) || {};
-const { Input, Badge } = NS;
-ReactDOM.createRoot(document.getElementById("r")).render(
-  <>
-    <Input label="E-mailadres" placeholder="jij@bedrijf.nl" hint="We reageren binnen 1 werkdag." />
-    <Input label="E-mailadres" invalid defaultValue="jij@" hint="Vul een geldig adres in." />
-    <div style={{gridColumn:"1 / -1", display:"flex", gap:24, alignItems:"center"}}>
-      <Badge>Ontwikkeling</Badge>
-      <Badge tone="ink">Solutions</Badge>
-    </div>
-  </>
-);
-</script>
-<script>(function(){var s=document.getElementById("jsxsrc").textContent;(0,eval)(Babel.transform(s,{presets:[["react",{runtime:"classic"}]]}).code);})();</script>
-</body></html>
+	<head>
+		<meta charset="utf-8" />
+		<link rel="stylesheet" href="../../styles.css" />
+		<script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+		<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+		<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+		<script src="../../_ds_bundle.js"></script>
+		<style>
+			body {
+				margin: 0;
+				padding: 28px;
+				background: #fff;
+				font-family: var(--font-sans);
+			}
+			#r {
+				display: grid;
+				grid-template-columns: 1fr 1fr;
+				gap: 24px;
+				align-items: start;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="r"></div>
+		<script type="text/plain" id="jsxsrc">
+			const NS = Object.values(window).find(v => v && typeof v === "object" && v.Button && v.Input) || {};
+			const { Input, Badge } = NS;
+			ReactDOM.createRoot(document.getElementById("r")).render(
+			  <>
+			    <Input label="E-mailadres" placeholder="jij@bedrijf.nl" hint="We reageren binnen 1 werkdag." />
+			    <Input label="E-mailadres" invalid defaultValue="jij@" hint="Vul een geldig adres in." />
+			    <div style={{gridColumn:"1 / -1", display:"flex", gap:24, alignItems:"center"}}>
+			      <Badge>Ontwikkeling</Badge>
+			      <Badge tone="ink">Solutions</Badge>
+			    </div>
+			  </>
+			);
+		</script>
+		<script>
+			(function () {
+				var s = document.getElementById("jsxsrc").textContent;
+				(0, eval)(Babel.transform(s, { presets: [["react", { runtime: "classic" }]] }).code);
+			})();
+		</script>
+	</body>
+</html>

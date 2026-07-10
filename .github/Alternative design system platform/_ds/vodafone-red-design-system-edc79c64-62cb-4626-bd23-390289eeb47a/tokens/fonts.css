@@ -2,4 +2,4 @@
    Substituted with Inter (weight 300/400/600/700/800) — the spec's
    recommended closest free match. At hero scale Inter 800 + letter-spacing
    -1px reproduces the stencil look. Swap in real Vodafone webfonts here. */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap");

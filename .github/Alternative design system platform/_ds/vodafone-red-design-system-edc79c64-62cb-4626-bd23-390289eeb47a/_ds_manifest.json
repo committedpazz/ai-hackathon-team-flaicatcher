@@ -1,1 +1,274 @@
-{"namespace":"VodafoneRedDesignSystem_edc79c","components":[{"name":"SpeechmarkOrb","sourcePath":"components/brand/SpeechmarkOrb.jsx"},{"name":"Badge","sourcePath":"components/core/Badge.jsx"},{"name":"Button","sourcePath":"components/core/Button.jsx"},{"name":"Card","sourcePath":"components/core/Card.jsx"},{"name":"IconButton","sourcePath":"components/core/IconButton.jsx"},{"name":"Input","sourcePath":"components/core/Input.jsx"},{"name":"NavBar","sourcePath":"components/navigation/NavBar.jsx"}],"startingPoints":[{"name":"marketing","path":"ui_kits/marketing/index.html","previewPath":"ui_kits/marketing/index.html","kind":"screen","section":"Marketing","subtitle":"Vodafone marketing homepage — hero, story grid, red band, footer","viewport":"1280x720"}],"cards":[{"path":"components/brand/orb.card.html","group":"Brand","viewport":"700x220","subtitle":"The brand's visual anchor — red orb at three sizes, on light + dark","name":"Speechmark orb"},{"path":"foundations/brand-band-rhythm.html","group":"Brand","viewport":"700x300","subtitle":"Ink hero → canvas content → ink footer. Surface contrast is the depth.","name":"Two-band rhythm"},{"path":"foundations/colors-brand.html","group":"Colors","viewport":"700x150","subtitle":"Vodafone Red — the single accent across the whole system","name":"Brand & accent"},{"path":"foundations/colors-surfaces.html","group":"Colors","viewport":"700x150","subtitle":"Two-band rhythm — ink dark, canvas light, soft tint. No mid greys.","name":"Surfaces"},{"path":"foundations/colors-text.html","group":"Colors","viewport":"700x150","subtitle":"Ink headings, grey body, mute placeholders, white on dark","name":"Text colours"},{"path":"components/core/buttons.card.html","group":"Components","viewport":"700x300","subtitle":"Pill CTAs — primary, outline variants, sizes, icon button","name":"Buttons"},{"path":"components/core/cards.card.html","group":"Components","viewport":"700x440","subtitle":"Story card + lead variant with badge, headline, caption","name":"Story cards"},{"path":"components/core/forms.card.html","group":"Components","viewport":"700x260","subtitle":"Text input states and inline category chips","name":"Forms & Badges"},{"path":"components/navigation/nav.card.html","group":"Components","viewport":"700x90","subtitle":"Dark nav — speechmark orb, link row, account CTA","name":"Top navigation"},{"path":"ui_kits/marketing/index.html","group":"Marketing","viewport":"1280x720","subtitle":"Hero → story band → red CTA → footer, with working search + account overlays","name":"Marketing homepage"},{"path":"foundations/radius-pills.html","group":"Spacing","viewport":"700x180","subtitle":"6px cards, 32/60px pills, full circle. Never square CTAs.","name":"Radius & pills"},{"path":"foundations/spacing-scale.html","group":"Spacing","viewport":"700x170","subtitle":"4px base unit — xxs(2) to 3xl(32)","name":"Spacing scale"},{"path":"foundations/type-body.html","group":"Type","viewport":"700x230","subtitle":"Regular-weight body roles + the uppercase eyebrow tag","name":"Body & eyebrow"},{"path":"foundations/type-caption.html","group":"Type","viewport":"700x180","subtitle":"Fine print, badge labels, uppercase metadata","name":"Caption"},{"path":"foundations/type-display-heavy.html","group":"Type","viewport":"700x240","subtitle":"Weight 800, UPPERCASE, -1px tracking. The brand's billboard voice.","name":"Display — heavy hero voice"},{"path":"foundations/type-display-light.html","group":"Type","viewport":"700x220","subtitle":"Weight 300 at 40–48px. The calm sentence after the shout.","name":"Display — light secondary voice"}],"templates":[],"globalCssPaths":["tokens/fonts.css","tokens/colors.css","tokens/typography.css","tokens/spacing.css","tokens/radius.css","tokens/base.css","styles.css"],"tokens":[{"name":"--vf-primary","value":"#e60000","kind":"color","definedIn":"tokens/colors.css"},{"name":"--vf-on-primary","value":"#ffffff","kind":"color","definedIn":"tokens/colors.css"},{"name":"--vf-canvas","value":"#ffffff","kind":"color","definedIn":"tokens/colors.css"},{"name":"--vf-canvas-soft","value":"#f2f2f2","kind":"color","definedIn":"tokens/colors.css"},{"name":"--vf-ink","value":"#25282b","kind":"color","definedIn":"tokens/colors.css"},{"name":"--vf-body","value":"#7e7e7e","kind":"color","definedIn":"tokens/colors.css"},{"name":"--vf-mute","value":"#bebebe","kind":"color","definedIn":"tokens/colors.css"},{"name":"--vf-on-dark","value":"#ffffff","kind":"color","definedIn":"tokens/colors.css"},{"name":"--text-heading","value":"var(--vf-ink)","kind":"font","definedIn":"tokens/colors.css"},{"name":"--text-body","value":"var(--vf-body)","kind":"font","definedIn":"tokens/colors.css"},{"name":"--text-mute","value":"var(--vf-mute)","kind":"font","definedIn":"tokens/colors.css"},{"name":"--text-on-dark","value":"var(--vf-on-dark)","kind":"font","definedIn":"tokens/colors.css"},{"name":"--text-on-primary","value":"var(--vf-on-primary)","kind":"font","definedIn":"tokens/colors.css"},{"name":"--surface-canvas","value":"var(--vf-canvas)","kind":"color","definedIn":"tokens/colors.css"},{"name":"--surface-soft","value":"var(--vf-canvas-soft)","kind":"color","definedIn":"tokens/colors.css"},{"name":"--surface-ink","value":"var(--vf-ink)","kind":"color","definedIn":"tokens/colors.css"},{"name":"--surface-primary","value":"var(--vf-primary)","kind":"color","definedIn":"tokens/colors.css"},{"name":"--border-ink","value":"var(--vf-ink)","kind":"color","definedIn":"tokens/colors.css"},{"name":"--border-mute","value":"var(--vf-mute)","kind":"color","definedIn":"tokens/colors.css"},{"name":"--border-on-dark","value":"rgba(255, 255, 255, 0.25)","kind":"color","definedIn":"tokens/colors.css"},{"name":"--vf-font","value":"'Inter', 'Vodafone', 'Vodafone Rg', 'Helvetica Neue', Arial, sans-serif","kind":"font","definedIn":"tokens/typography.css"},{"name":"--font-display","value":"var(--vf-font)","kind":"font","definedIn":"tokens/typography.css"},{"name":"--font-body","value":"var(--vf-font)","kind":"font","definedIn":"tokens/typography.css"},{"name":"--vf-w-light","value":"300","kind":"font","definedIn":"tokens/typography.css","annotation":"font"},{"name":"--vf-w-regular","value":"400","kind":"font","definedIn":"tokens/typography.css","annotation":"font"},{"name":"--vf-w-medium","value":"600","kind":"font","definedIn":"tokens/typography.css","annotation":"font"},{"name":"--vf-w-bold","value":"700","kind":"font","definedIn":"tokens/typography.css","annotation":"font"},{"name":"--vf-w-heavy","value":"800","kind":"font","definedIn":"tokens/typography.css","annotation":"font"},{"name":"--vf-display-hero-size","value":"144px","kind":"spacing","definedIn":"tokens/typography.css"},{"name":"--vf-display-hero-lh","value":"114px","kind":"spacing","definedIn":"tokens/typography.css"},{"name":"--vf-display-hero-ls","value":"-1px","kind":"spacing","definedIn":"tokens/typography.css"},{"name":"--vf-display-xxl-size","value":"126px","kind":"spacing","definedIn":"tokens/typography.css"},{"name":"--vf-display-xxl-lh","value":"113px","kind":"spacing","definedIn":"tokens/typography.css"},{"name":"--vf-display-xxl-ls","value":"-1px","kind":"spacing","definedIn":"tokens/typography.css"},{"name":"--vf-display-xl-size","value":"90px","kind":"spacing","definedIn":"tokens/typography.css"},{"name":"--vf-display-xl-lh","value":"84px","kind":"spacing","definedIn":"tokens/typography.css"},{"name":"--vf-display-xl-ls","value":"0","kind":"other","definedIn":"tokens/typography.css","annotation":"other"},{"name":"--vf-display-lg-size","value":"48px","kind":"spacing","definedIn":"tokens/typography.css"},{"name":"--vf-display-lg-lh","value":"52px","kind":"spacing","definedIn":"tokens/typography.css"},{"name":"--vf-display-md-size","value":"40px","kind":"spacing","definedIn":"tokens/typography.css"},{"name":"--vf-display-md-lh","value":"44px","kind":"spacing","definedIn":"tokens/typography.css"},{"name":"--vf-display-sm-size","value":"32px","kind":"spacing","definedIn":"tokens/typography.css"},{"name":"--vf-display-sm-lh","value":"40px","kind":"spacing","definedIn":"tokens/typography.css"},{"name":"--vf-display-xs-size","value":"24px","kind":"spacing","definedIn":"tokens/typography.css"},{"name":"--vf-display-xs-lh","value":"24px","kind":"spacing","definedIn":"tokens/typography.css"},{"name":"--vf-eyebrow-size","value":"16px","kind":"spacing","definedIn":"tokens/typography.css"},{"name":"--vf-eyebrow-lh","value":"24px","kind":"spacing","definedIn":"tokens/typography.css"},{"name":"--vf-body-lg-size","value":"22px","kind":"spacing","definedIn":"tokens/typography.css"},{"name":"--vf-body-lg-lh","value":"24px","kind":"spacing","definedIn":"tokens/typography.css"},{"name":"--vf-body-md-size","value":"18px","kind":"spacing","definedIn":"tokens/typography.css"},{"name":"--vf-body-md-lh","value":"28px","kind":"spacing","definedIn":"tokens/typography.css"},{"name":"--vf-body-sm-size","value":"16px","kind":"spacing","definedIn":"tokens/typography.css"},{"name":"--vf-body-sm-lh","value":"20px","kind":"spacing","definedIn":"tokens/typography.css"},{"name":"--vf-caption-size","value":"14px","kind":"spacing","definedIn":"tokens/typography.css"},{"name":"--vf-caption-lh","value":"16px","kind":"spacing","definedIn":"tokens/typography.css"},{"name":"--vf-caption-strong-lh","value":"21px","kind":"spacing","definedIn":"tokens/typography.css"},{"name":"--vf-caption-up-size","value":"12px","kind":"spacing","definedIn":"tokens/typography.css"},{"name":"--vf-caption-up-lh","value":"16px","kind":"spacing","definedIn":"tokens/typography.css"},{"name":"--vf-caption-up-ls","value":"0.57px","kind":"spacing","definedIn":"tokens/typography.css"},{"name":"--vf-space-xxs","value":"2px","kind":"spacing","definedIn":"tokens/spacing.css"},{"name":"--vf-space-xs","value":"4px","kind":"spacing","definedIn":"tokens/spacing.css"},{"name":"--vf-space-sm","value":"8px","kind":"spacing","definedIn":"tokens/spacing.css"},{"name":"--vf-space-md","value":"12px","kind":"spacing","definedIn":"tokens/spacing.css"},{"name":"--vf-space-lg","value":"16px","kind":"spacing","definedIn":"tokens/spacing.css"},{"name":"--vf-space-xl","value":"20px","kind":"spacing","definedIn":"tokens/spacing.css"},{"name":"--vf-space-2xl","value":"24px","kind":"spacing","definedIn":"tokens/spacing.css"},{"name":"--vf-space-3xl","value":"32px","kind":"spacing","definedIn":"tokens/spacing.css"},{"name":"--vf-gutter","value":"var(--vf-space-3xl)","kind":"color","definedIn":"tokens/spacing.css"},{"name":"--vf-radius-none","value":"0px","kind":"radius","definedIn":"tokens/radius.css"},{"name":"--vf-radius-xs","value":"1px","kind":"radius","definedIn":"tokens/radius.css"},{"name":"--vf-radius-sm","value":"6px","kind":"radius","definedIn":"tokens/radius.css"},{"name":"--vf-radius-card","value":"6px","kind":"radius","definedIn":"tokens/radius.css"},{"name":"--vf-radius-pill-md","value":"32px","kind":"radius","definedIn":"tokens/radius.css"},{"name":"--vf-radius-pill-lg","value":"60px","kind":"radius","definedIn":"tokens/radius.css"},{"name":"--vf-radius-full","value":"9999px","kind":"radius","definedIn":"tokens/radius.css"}],"themes":[],"fonts":[],"brandFonts":[{"family":"Inter","status":"ok","tokens":["--vf-font"],"path":"tokens/typography.css"}],"source":"spa"}
+{
+	"namespace": "VodafoneRedDesignSystem_edc79c",
+	"components": [
+		{ "name": "SpeechmarkOrb", "sourcePath": "components/brand/SpeechmarkOrb.jsx" },
+		{ "name": "Badge", "sourcePath": "components/core/Badge.jsx" },
+		{ "name": "Button", "sourcePath": "components/core/Button.jsx" },
+		{ "name": "Card", "sourcePath": "components/core/Card.jsx" },
+		{ "name": "IconButton", "sourcePath": "components/core/IconButton.jsx" },
+		{ "name": "Input", "sourcePath": "components/core/Input.jsx" },
+		{ "name": "NavBar", "sourcePath": "components/navigation/NavBar.jsx" }
+	],
+	"startingPoints": [
+		{
+			"name": "marketing",
+			"path": "ui_kits/marketing/index.html",
+			"previewPath": "ui_kits/marketing/index.html",
+			"kind": "screen",
+			"section": "Marketing",
+			"subtitle": "Vodafone marketing homepage — hero, story grid, red band, footer",
+			"viewport": "1280x720"
+		}
+	],
+	"cards": [
+		{
+			"path": "components/brand/orb.card.html",
+			"group": "Brand",
+			"viewport": "700x220",
+			"subtitle": "The brand's visual anchor — red orb at three sizes, on light + dark",
+			"name": "Speechmark orb"
+		},
+		{
+			"path": "foundations/brand-band-rhythm.html",
+			"group": "Brand",
+			"viewport": "700x300",
+			"subtitle": "Ink hero → canvas content → ink footer. Surface contrast is the depth.",
+			"name": "Two-band rhythm"
+		},
+		{
+			"path": "foundations/colors-brand.html",
+			"group": "Colors",
+			"viewport": "700x150",
+			"subtitle": "Vodafone Red — the single accent across the whole system",
+			"name": "Brand & accent"
+		},
+		{
+			"path": "foundations/colors-surfaces.html",
+			"group": "Colors",
+			"viewport": "700x150",
+			"subtitle": "Two-band rhythm — ink dark, canvas light, soft tint. No mid greys.",
+			"name": "Surfaces"
+		},
+		{
+			"path": "foundations/colors-text.html",
+			"group": "Colors",
+			"viewport": "700x150",
+			"subtitle": "Ink headings, grey body, mute placeholders, white on dark",
+			"name": "Text colours"
+		},
+		{
+			"path": "components/core/buttons.card.html",
+			"group": "Components",
+			"viewport": "700x300",
+			"subtitle": "Pill CTAs — primary, outline variants, sizes, icon button",
+			"name": "Buttons"
+		},
+		{
+			"path": "components/core/cards.card.html",
+			"group": "Components",
+			"viewport": "700x440",
+			"subtitle": "Story card + lead variant with badge, headline, caption",
+			"name": "Story cards"
+		},
+		{
+			"path": "components/core/forms.card.html",
+			"group": "Components",
+			"viewport": "700x260",
+			"subtitle": "Text input states and inline category chips",
+			"name": "Forms & Badges"
+		},
+		{
+			"path": "components/navigation/nav.card.html",
+			"group": "Components",
+			"viewport": "700x90",
+			"subtitle": "Dark nav — speechmark orb, link row, account CTA",
+			"name": "Top navigation"
+		},
+		{
+			"path": "ui_kits/marketing/index.html",
+			"group": "Marketing",
+			"viewport": "1280x720",
+			"subtitle": "Hero → story band → red CTA → footer, with working search + account overlays",
+			"name": "Marketing homepage"
+		},
+		{
+			"path": "foundations/radius-pills.html",
+			"group": "Spacing",
+			"viewport": "700x180",
+			"subtitle": "6px cards, 32/60px pills, full circle. Never square CTAs.",
+			"name": "Radius & pills"
+		},
+		{
+			"path": "foundations/spacing-scale.html",
+			"group": "Spacing",
+			"viewport": "700x170",
+			"subtitle": "4px base unit — xxs(2) to 3xl(32)",
+			"name": "Spacing scale"
+		},
+		{
+			"path": "foundations/type-body.html",
+			"group": "Type",
+			"viewport": "700x230",
+			"subtitle": "Regular-weight body roles + the uppercase eyebrow tag",
+			"name": "Body & eyebrow"
+		},
+		{
+			"path": "foundations/type-caption.html",
+			"group": "Type",
+			"viewport": "700x180",
+			"subtitle": "Fine print, badge labels, uppercase metadata",
+			"name": "Caption"
+		},
+		{
+			"path": "foundations/type-display-heavy.html",
+			"group": "Type",
+			"viewport": "700x240",
+			"subtitle": "Weight 800, UPPERCASE, -1px tracking. The brand's billboard voice.",
+			"name": "Display — heavy hero voice"
+		},
+		{
+			"path": "foundations/type-display-light.html",
+			"group": "Type",
+			"viewport": "700x220",
+			"subtitle": "Weight 300 at 40–48px. The calm sentence after the shout.",
+			"name": "Display — light secondary voice"
+		}
+	],
+	"templates": [],
+	"globalCssPaths": [
+		"tokens/fonts.css",
+		"tokens/colors.css",
+		"tokens/typography.css",
+		"tokens/spacing.css",
+		"tokens/radius.css",
+		"tokens/base.css",
+		"styles.css"
+	],
+	"tokens": [
+		{ "name": "--vf-primary", "value": "#e60000", "kind": "color", "definedIn": "tokens/colors.css" },
+		{ "name": "--vf-on-primary", "value": "#ffffff", "kind": "color", "definedIn": "tokens/colors.css" },
+		{ "name": "--vf-canvas", "value": "#ffffff", "kind": "color", "definedIn": "tokens/colors.css" },
+		{ "name": "--vf-canvas-soft", "value": "#f2f2f2", "kind": "color", "definedIn": "tokens/colors.css" },
+		{ "name": "--vf-ink", "value": "#25282b", "kind": "color", "definedIn": "tokens/colors.css" },
+		{ "name": "--vf-body", "value": "#7e7e7e", "kind": "color", "definedIn": "tokens/colors.css" },
+		{ "name": "--vf-mute", "value": "#bebebe", "kind": "color", "definedIn": "tokens/colors.css" },
+		{ "name": "--vf-on-dark", "value": "#ffffff", "kind": "color", "definedIn": "tokens/colors.css" },
+		{ "name": "--text-heading", "value": "var(--vf-ink)", "kind": "font", "definedIn": "tokens/colors.css" },
+		{ "name": "--text-body", "value": "var(--vf-body)", "kind": "font", "definedIn": "tokens/colors.css" },
+		{ "name": "--text-mute", "value": "var(--vf-mute)", "kind": "font", "definedIn": "tokens/colors.css" },
+		{ "name": "--text-on-dark", "value": "var(--vf-on-dark)", "kind": "font", "definedIn": "tokens/colors.css" },
+		{ "name": "--text-on-primary", "value": "var(--vf-on-primary)", "kind": "font", "definedIn": "tokens/colors.css" },
+		{ "name": "--surface-canvas", "value": "var(--vf-canvas)", "kind": "color", "definedIn": "tokens/colors.css" },
+		{ "name": "--surface-soft", "value": "var(--vf-canvas-soft)", "kind": "color", "definedIn": "tokens/colors.css" },
+		{ "name": "--surface-ink", "value": "var(--vf-ink)", "kind": "color", "definedIn": "tokens/colors.css" },
+		{ "name": "--surface-primary", "value": "var(--vf-primary)", "kind": "color", "definedIn": "tokens/colors.css" },
+		{ "name": "--border-ink", "value": "var(--vf-ink)", "kind": "color", "definedIn": "tokens/colors.css" },
+		{ "name": "--border-mute", "value": "var(--vf-mute)", "kind": "color", "definedIn": "tokens/colors.css" },
+		{
+			"name": "--border-on-dark",
+			"value": "rgba(255, 255, 255, 0.25)",
+			"kind": "color",
+			"definedIn": "tokens/colors.css"
+		},
+		{
+			"name": "--vf-font",
+			"value": "'Inter', 'Vodafone', 'Vodafone Rg', 'Helvetica Neue', Arial, sans-serif",
+			"kind": "font",
+			"definedIn": "tokens/typography.css"
+		},
+		{ "name": "--font-display", "value": "var(--vf-font)", "kind": "font", "definedIn": "tokens/typography.css" },
+		{ "name": "--font-body", "value": "var(--vf-font)", "kind": "font", "definedIn": "tokens/typography.css" },
+		{
+			"name": "--vf-w-light",
+			"value": "300",
+			"kind": "font",
+			"definedIn": "tokens/typography.css",
+			"annotation": "font"
+		},
+		{
+			"name": "--vf-w-regular",
+			"value": "400",
+			"kind": "font",
+			"definedIn": "tokens/typography.css",
+			"annotation": "font"
+		},
+		{
+			"name": "--vf-w-medium",
+			"value": "600",
+			"kind": "font",
+			"definedIn": "tokens/typography.css",
+			"annotation": "font"
+		},
+		{
+			"name": "--vf-w-bold",
+			"value": "700",
+			"kind": "font",
+			"definedIn": "tokens/typography.css",
+			"annotation": "font"
+		},
+		{
+			"name": "--vf-w-heavy",
+			"value": "800",
+			"kind": "font",
+			"definedIn": "tokens/typography.css",
+			"annotation": "font"
+		},
+		{ "name": "--vf-display-hero-size", "value": "144px", "kind": "spacing", "definedIn": "tokens/typography.css" },
+		{ "name": "--vf-display-hero-lh", "value": "114px", "kind": "spacing", "definedIn": "tokens/typography.css" },
+		{ "name": "--vf-display-hero-ls", "value": "-1px", "kind": "spacing", "definedIn": "tokens/typography.css" },
+		{ "name": "--vf-display-xxl-size", "value": "126px", "kind": "spacing", "definedIn": "tokens/typography.css" },
+		{ "name": "--vf-display-xxl-lh", "value": "113px", "kind": "spacing", "definedIn": "tokens/typography.css" },
+		{ "name": "--vf-display-xxl-ls", "value": "-1px", "kind": "spacing", "definedIn": "tokens/typography.css" },
+		{ "name": "--vf-display-xl-size", "value": "90px", "kind": "spacing", "definedIn": "tokens/typography.css" },
+		{ "name": "--vf-display-xl-lh", "value": "84px", "kind": "spacing", "definedIn": "tokens/typography.css" },
+		{
+			"name": "--vf-display-xl-ls",
+			"value": "0",
+			"kind": "other",
+			"definedIn": "tokens/typography.css",
+			"annotation": "other"
+		},
+		{ "name": "--vf-display-lg-size", "value": "48px", "kind": "spacing", "definedIn": "tokens/typography.css" },
+		{ "name": "--vf-display-lg-lh", "value": "52px", "kind": "spacing", "definedIn": "tokens/typography.css" },
+		{ "name": "--vf-display-md-size", "value": "40px", "kind": "spacing", "definedIn": "tokens/typography.css" },
+		{ "name": "--vf-display-md-lh", "value": "44px", "kind": "spacing", "definedIn": "tokens/typography.css" },
+		{ "name": "--vf-display-sm-size", "value": "32px", "kind": "spacing", "definedIn": "tokens/typography.css" },
+		{ "name": "--vf-display-sm-lh", "value": "40px", "kind": "spacing", "definedIn": "tokens/typography.css" },
+		{ "name": "--vf-display-xs-size", "value": "24px", "kind": "spacing", "definedIn": "tokens/typography.css" },
+		{ "name": "--vf-display-xs-lh", "value": "24px", "kind": "spacing", "definedIn": "tokens/typography.css" },
+		{ "name": "--vf-eyebrow-size", "value": "16px", "kind": "spacing", "definedIn": "tokens/typography.css" },
+		{ "name": "--vf-eyebrow-lh", "value": "24px", "kind": "spacing", "definedIn": "tokens/typography.css" },
+		{ "name": "--vf-body-lg-size", "value": "22px", "kind": "spacing", "definedIn": "tokens/typography.css" },
+		{ "name": "--vf-body-lg-lh", "value": "24px", "kind": "spacing", "definedIn": "tokens/typography.css" },
+		{ "name": "--vf-body-md-size", "value": "18px", "kind": "spacing", "definedIn": "tokens/typography.css" },
+		{ "name": "--vf-body-md-lh", "value": "28px", "kind": "spacing", "definedIn": "tokens/typography.css" },
+		{ "name": "--vf-body-sm-size", "value": "16px", "kind": "spacing", "definedIn": "tokens/typography.css" },
+		{ "name": "--vf-body-sm-lh", "value": "20px", "kind": "spacing", "definedIn": "tokens/typography.css" },
+		{ "name": "--vf-caption-size", "value": "14px", "kind": "spacing", "definedIn": "tokens/typography.css" },
+		{ "name": "--vf-caption-lh", "value": "16px", "kind": "spacing", "definedIn": "tokens/typography.css" },
+		{ "name": "--vf-caption-strong-lh", "value": "21px", "kind": "spacing", "definedIn": "tokens/typography.css" },
+		{ "name": "--vf-caption-up-size", "value": "12px", "kind": "spacing", "definedIn": "tokens/typography.css" },
+		{ "name": "--vf-caption-up-lh", "value": "16px", "kind": "spacing", "definedIn": "tokens/typography.css" },
+		{ "name": "--vf-caption-up-ls", "value": "0.57px", "kind": "spacing", "definedIn": "tokens/typography.css" },
+		{ "name": "--vf-space-xxs", "value": "2px", "kind": "spacing", "definedIn": "tokens/spacing.css" },
+		{ "name": "--vf-space-xs", "value": "4px", "kind": "spacing", "definedIn": "tokens/spacing.css" },
+		{ "name": "--vf-space-sm", "value": "8px", "kind": "spacing", "definedIn": "tokens/spacing.css" },
+		{ "name": "--vf-space-md", "value": "12px", "kind": "spacing", "definedIn": "tokens/spacing.css" },
+		{ "name": "--vf-space-lg", "value": "16px", "kind": "spacing", "definedIn": "tokens/spacing.css" },
+		{ "name": "--vf-space-xl", "value": "20px", "kind": "spacing", "definedIn": "tokens/spacing.css" },
+		{ "name": "--vf-space-2xl", "value": "24px", "kind": "spacing", "definedIn": "tokens/spacing.css" },
+		{ "name": "--vf-space-3xl", "value": "32px", "kind": "spacing", "definedIn": "tokens/spacing.css" },
+		{ "name": "--vf-gutter", "value": "var(--vf-space-3xl)", "kind": "color", "definedIn": "tokens/spacing.css" },
+		{ "name": "--vf-radius-none", "value": "0px", "kind": "radius", "definedIn": "tokens/radius.css" },
+		{ "name": "--vf-radius-xs", "value": "1px", "kind": "radius", "definedIn": "tokens/radius.css" },
+		{ "name": "--vf-radius-sm", "value": "6px", "kind": "radius", "definedIn": "tokens/radius.css" },
+		{ "name": "--vf-radius-card", "value": "6px", "kind": "radius", "definedIn": "tokens/radius.css" },
+		{ "name": "--vf-radius-pill-md", "value": "32px", "kind": "radius", "definedIn": "tokens/radius.css" },
+		{ "name": "--vf-radius-pill-lg", "value": "60px", "kind": "radius", "definedIn": "tokens/radius.css" },
+		{ "name": "--vf-radius-full", "value": "9999px", "kind": "radius", "definedIn": "tokens/radius.css" }
+	],
+	"themes": [],
+	"fonts": [],
+	"brandFonts": [{ "family": "Inter", "status": "ok", "tokens": ["--vf-font"], "path": "tokens/typography.css" }],
+	"source": "spa"
+}

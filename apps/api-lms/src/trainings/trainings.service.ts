@@ -2,12 +2,16 @@ import { prisma } from "@cerios/database";
 import type { CompleteLessonResponse, TrainingDetailDto, TrainingSummaryDto } from "@cerios/shared-types";
 import { Injectable, NotFoundException } from "@nestjs/common";
 
+import { GamificationService } from "../gamification/gamification.service";
+
 @Injectable()
 export class TrainingsService {
+	constructor(private readonly gamificationService: GamificationService) { }
+
 	async listTrainings(userId: string): Promise<TrainingSummaryDto[]> {
 		const trainings = await prisma.training.findMany({
 			where: { status: "PUBLISHED" },
-			include: { chapters: { include: { lessons: true } } },
+			include: { chapters: { include: { lessons: true } }, quiz: true },
 		});
 
 		const lessonProgress = await prisma.lessonProgress.findMany({ where: { userId } });
@@ -24,6 +28,7 @@ export class TrainingsService {
 				level: training.level,
 				language: training.language,
 				progressPercentage,
+				hasQuiz: training.quiz !== null,
 			};
 		});
 	}
@@ -36,6 +41,7 @@ export class TrainingsService {
 					orderBy: { order: "asc" },
 					include: { lessons: { orderBy: { order: "asc" } } },
 				},
+				quiz: true,
 			},
 		});
 
@@ -49,6 +55,14 @@ export class TrainingsService {
 		const allLessons = training.chapters.flatMap(chapter => chapter.lessons);
 		const progressPercentage = calculateProgressPercentage(allLessons, new Set(completedByLessonId.keys()));
 
+		let quizPassed = false;
+		if (training.quiz) {
+			const passedAttempt = await prisma.quizAttempt.findFirst({
+				where: { quizId: training.quiz.id, userId, passed: true },
+			});
+			quizPassed = passedAttempt !== null;
+		}
+
 		return {
 			id: training.id,
 			title: training.title,
@@ -57,6 +71,9 @@ export class TrainingsService {
 			language: training.language,
 			status: training.status,
 			progressPercentage,
+			gamificationEnabled: training.gamificationEnabled,
+			hasQuiz: training.quiz !== null,
+			quizPassed,
 			chapters: training.chapters.map(chapter => ({
 				id: chapter.id,
 				trainingId: chapter.trainingId,
@@ -81,13 +98,18 @@ export class TrainingsService {
 			throw new NotFoundException(`Lesson ${lessonId} was not found.`);
 		}
 
-		const progress = await prisma.lessonProgress.upsert({
+		const existingProgress = await prisma.lessonProgress.findUnique({
 			where: { userId_lessonId: { userId, lessonId } },
-			update: { completedAt: new Date() },
-			create: { userId, lessonId },
 		});
+		const isNewCompletion = existingProgress === null;
 
-		return { lessonId, completedAt: progress.completedAt.toISOString() };
+		const progress = isNewCompletion
+			? await prisma.lessonProgress.create({ data: { userId, lessonId } })
+			: existingProgress;
+
+		const gamification = isNewCompletion ? await this.gamificationService.onLessonCompleted(userId, lessonId) : null;
+
+		return { lessonId, completedAt: progress.completedAt.toISOString(), gamification };
 	}
 }
 

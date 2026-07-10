@@ -1,10 +1,10 @@
 import React from "react";
 
 export interface NavBarProps {
-  onMenu?: () => void;
-  /** Toggles the hamburger→close animation. @default false */
-  menuOpen?: boolean;
-  style?: React.CSSProperties;
+	onMenu?: () => void;
+	/** Toggles the hamburger→close animation. @default false */
+	menuOpen?: boolean;
+	style?: React.CSSProperties;
 }
 
 /**

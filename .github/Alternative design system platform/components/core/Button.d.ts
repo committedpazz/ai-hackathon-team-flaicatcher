@@ -1,18 +1,18 @@
 import React from "react";
 
 export interface ButtonProps {
-  children: React.ReactNode;
-  /** Visual style. @default "primary" */
-  variant?: "primary" | "cream" | "navy" | "outline-on-dark";
-  /** @default "md" */
-  size?: "sm" | "md" | "lg";
-  /** Show the leading arrow glyph. @default true */
-  arrow?: boolean;
-  href?: string;
-  onClick?: () => void;
-  type?: "button" | "submit" | "reset";
-  disabled?: boolean;
-  style?: React.CSSProperties;
+	children: React.ReactNode;
+	/** Visual style. @default "primary" */
+	variant?: "primary" | "cream" | "navy" | "outline-on-dark";
+	/** @default "md" */
+	size?: "sm" | "md" | "lg";
+	/** Show the leading arrow glyph. @default true */
+	arrow?: boolean;
+	href?: string;
+	onClick?: () => void;
+	type?: "button" | "submit" | "reset";
+	disabled?: boolean;
+	style?: React.CSSProperties;
 }
 
 /**

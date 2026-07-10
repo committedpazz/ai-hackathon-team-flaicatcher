@@ -71,10 +71,18 @@ export function AppHeader({ user, onLogout }: AppHeaderProps): React.JSX.Element
 				<NavLink to="/trainings" style={({ isActive }) => tabStyle(isActive)}>
 					My trainings
 				</NavLink>
+				<NavLink to="/learning-paths" style={({ isActive }) => tabStyle(isActive)}>
+					Learning paths
+				</NavLink>
 				{isTrainer && (
-					<NavLink to="/authoring" style={({ isActive }) => tabStyle(isActive)}>
-						My authored trainings
-					</NavLink>
+					<>
+						<NavLink to="/authoring" style={({ isActive }) => tabStyle(isActive)}>
+							My authored trainings
+						</NavLink>
+						<NavLink to="/authoring/learning-paths" style={({ isActive }) => tabStyle(isActive)}>
+							My authored learning paths
+						</NavLink>
+					</>
 				)}
 			</nav>
 		</header>

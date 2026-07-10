@@ -1,5 +1,7 @@
 // Modeled as a const object + derived union (not a TS `enum`) so it structurally
 // matches the string union type Prisma generates for its own enums.
+import type { GamificationAwardResultDto } from "./gamification.dto.js";
+
 export const LessonContentType = {
 	TEXT: "TEXT",
 } as const;
@@ -39,6 +41,7 @@ export interface TrainingSummaryDto {
 	level: string;
 	language: string;
 	progressPercentage: number;
+	hasQuiz: boolean;
 }
 
 export interface TrainingDetailDto {
@@ -50,11 +53,15 @@ export interface TrainingDetailDto {
 	status: TrainingStatus;
 	chapters: ChapterDto[];
 	progressPercentage: number;
+	gamificationEnabled: boolean;
+	hasQuiz: boolean;
+	quizPassed: boolean;
 }
 
 export interface CompleteLessonResponse {
 	lessonId: string;
 	completedAt: string;
+	gamification: GamificationAwardResultDto | null;
 }
 
 export interface AuthoredTrainingSummaryDto {
@@ -66,6 +73,8 @@ export interface AuthoredTrainingSummaryDto {
 	status: TrainingStatus;
 	chapterCount: number;
 	lessonCount: number;
+	gamificationEnabled: boolean;
+	hasQuiz: boolean;
 }
 
 export interface CreateTrainingRequest {
@@ -80,6 +89,7 @@ export interface UpdateTrainingRequest {
 	description?: string;
 	level?: string;
 	language?: string;
+	gamificationEnabled?: boolean;
 }
 
 export interface CreateChapterRequest {

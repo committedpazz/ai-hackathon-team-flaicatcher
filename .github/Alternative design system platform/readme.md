@@ -12,21 +12,21 @@ A design system derived from the public **Cerios** website (cerios.com / cerios.
 
 ## Index (manifest)
 
-| Path | What it is |
-|---|---|
-| `styles.css` | Global entry — `@import`s only. Consumers link this one file. |
-| `tokens/fonts.css` | Webfont loading (Figtree substitute). |
-| `tokens/colors.css` | Color custom properties + semantic aliases. |
-| `tokens/typography.css` | Font family, weights, type-role sizes. |
-| `tokens/spacing.css` | 4px spacing scale + usage tokens. |
-| `tokens/radius.css` | Radius scale (pills + rounded cards). |
-| `tokens/base.css` | Reset + `.ce-*` type-role utility classes. |
-| `components/core/` | Button, Card, Badge, Input. |
-| `components/navigation/` | NavBar, Accordion. |
-| `components/brand/` | Wordmark. |
-| `foundations/` | Specimen cards for the Design System tab. |
-| `ui_kits/marketing/` | Interactive homepage recreation. |
-| `SKILL.md` | Agent-Skill entry point. |
+| Path                     | What it is                                                    |
+| ------------------------ | ------------------------------------------------------------- |
+| `styles.css`             | Global entry — `@import`s only. Consumers link this one file. |
+| `tokens/fonts.css`       | Webfont loading (Figtree substitute).                         |
+| `tokens/colors.css`      | Color custom properties + semantic aliases.                   |
+| `tokens/typography.css`  | Font family, weights, type-role sizes.                        |
+| `tokens/spacing.css`     | 4px spacing scale + usage tokens.                             |
+| `tokens/radius.css`      | Radius scale (pills + rounded cards).                         |
+| `tokens/base.css`        | Reset + `.ce-*` type-role utility classes.                    |
+| `components/core/`       | Button, Card, Badge, Input.                                   |
+| `components/navigation/` | NavBar, Accordion.                                            |
+| `components/brand/`      | Wordmark.                                                     |
+| `foundations/`           | Specimen cards for the Design System tab.                     |
+| `ui_kits/marketing/`     | Interactive homepage recreation.                              |
+| `SKILL.md`               | Agent-Skill entry point.                                      |
 
 **Components:** Button · Card · Badge · Input · NavBar · Accordion · Wordmark.
 **UI kits:** Marketing (homepage).
@@ -35,7 +35,7 @@ A design system derived from the public **Cerios** website (cerios.com / cerios.
 
 ## Content fundamentals
 
-**Voice: warm, direct, human — Dutch "no-nonsense" optimism.** Copy speaks *to* the reader in second person ("jij / jouw / je") and about the company as "wij / we". It is confident and plain-spoken, never salesy.
+**Voice: warm, direct, human — Dutch "no-nonsense" optimism.** Copy speaks _to_ the reader in second person ("jij / jouw / je") and about the company as "wij / we". It is confident and plain-spoken, never salesy.
 
 - **Language.** Primary content is **Dutch**; navigation and the tagline mix in English ("Solutions", "about software quality", "Werken bij").
 - **Casing.** **Sentence case everywhere** — including big display headlines ("Softwarekwaliteit die werkt voor jouw organisatie"). No uppercase shouting. Green eyebrows are sentence case too ("Ontwikkeling").

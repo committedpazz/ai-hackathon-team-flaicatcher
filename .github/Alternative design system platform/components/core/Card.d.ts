@@ -1,11 +1,11 @@
 import React from "react";
 
 export interface CardProps {
-  /** Icon glyph shown inside the green tile (e.g. an SVG). */
-  icon?: React.ReactNode;
-  title: React.ReactNode;
-  body: React.ReactNode;
-  style?: React.CSSProperties;
+	/** Icon glyph shown inside the green tile (e.g. an SVG). */
+	icon?: React.ReactNode;
+	title: React.ReactNode;
+	body: React.ReactNode;
+	style?: React.CSSProperties;
 }
 
 /**

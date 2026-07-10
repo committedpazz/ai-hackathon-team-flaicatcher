@@ -2,11 +2,11 @@
    Pill geometry on every interactive shape; cards stay gentle at 6px.
    The brand never uses square corners on CTAs. */
 :root {
-  --vf-radius-none: 0px;
-  --vf-radius-xs: 1px;
-  --vf-radius-sm: 6px;        /* canonical content radius — images, inputs */
-  --vf-radius-card: 6px;      /* card chrome (alias of sm) */
-  --vf-radius-pill-md: 32px;  /* badge / chip pills */
-  --vf-radius-pill-lg: 60px;  /* signature CTA pill — every button */
-  --vf-radius-full: 9999px;   /* circular icon containers */
+	--vf-radius-none: 0px;
+	--vf-radius-xs: 1px;
+	--vf-radius-sm: 6px; /* canonical content radius — images, inputs */
+	--vf-radius-card: 6px; /* card chrome (alias of sm) */
+	--vf-radius-pill-md: 32px; /* badge / chip pills */
+	--vf-radius-pill-lg: 60px; /* signature CTA pill — every button */
+	--vf-radius-full: 9999px; /* circular icon containers */
 }

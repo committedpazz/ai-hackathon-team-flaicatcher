@@ -1,5 +1,11 @@
-import type { AuthoredTrainingSummaryDto, AuthenticatedUser, ChapterDto, LessonDto } from "@cerios/shared-types";
-import { Body, Controller, Delete, Get, Param, Patch, Post, UseGuards } from "@nestjs/common";
+import type {
+    AuthoredQuizDto,
+    AuthoredTrainingSummaryDto,
+    AuthenticatedUser,
+    ChapterDto,
+    LessonDto,
+} from "@cerios/shared-types";
+import { Body, Controller, Delete, Get, Param, Patch, Post, Put, UseGuards } from "@nestjs/common";
 
 import { CurrentUser } from "../auth/decorators/current-user.decorator";
 import { Roles } from "../auth/decorators/roles.decorator";
@@ -8,6 +14,7 @@ import { RolesGuard } from "../auth/guards/roles.guard";
 
 import { CreateChapterDto } from "./dto/create-chapter.dto";
 import { CreateLessonDto } from "./dto/create-lesson.dto";
+import { CreateQuizDto } from "./dto/create-quiz.dto";
 import { CreateTrainingDto } from "./dto/create-training.dto";
 import { UpdateChapterDto } from "./dto/update-chapter.dto";
 import { UpdateLessonDto } from "./dto/update-lesson.dto";
@@ -18,89 +25,111 @@ import { TrainingAuthoringService } from "./training-authoring.service";
 @Roles("TRAINER")
 @Controller("authoring")
 export class TrainingAuthoringController {
-	constructor(private readonly authoringService: TrainingAuthoringService) {}
+    constructor(private readonly authoringService: TrainingAuthoringService) { }
 
-	@Get("trainings")
-	listAuthoredTrainings(@CurrentUser() user: AuthenticatedUser): Promise<AuthoredTrainingSummaryDto[]> {
-		return this.authoringService.listAuthoredTrainings(user.id);
-	}
+    @Get("trainings")
+    listAuthoredTrainings(@CurrentUser() user: AuthenticatedUser): Promise<AuthoredTrainingSummaryDto[]> {
+        return this.authoringService.listAuthoredTrainings(user.id);
+    }
 
-	@Post("trainings")
-	createTraining(
-		@Body() dto: CreateTrainingDto,
-		@CurrentUser() user: AuthenticatedUser
-	): Promise<AuthoredTrainingSummaryDto> {
-		return this.authoringService.createTraining(user.id, dto);
-	}
+    @Post("trainings")
+    createTraining(
+        @Body() dto: CreateTrainingDto,
+        @CurrentUser() user: AuthenticatedUser
+    ): Promise<AuthoredTrainingSummaryDto> {
+        return this.authoringService.createTraining(user.id, dto);
+    }
 
-	@Patch("trainings/:trainingId")
-	updateTraining(
-		@Param("trainingId") trainingId: string,
-		@Body() dto: UpdateTrainingDto,
-		@CurrentUser() user: AuthenticatedUser
-	): Promise<AuthoredTrainingSummaryDto> {
-		return this.authoringService.updateTraining(trainingId, user.id, dto);
-	}
+    @Patch("trainings/:trainingId")
+    updateTraining(
+        @Param("trainingId") trainingId: string,
+        @Body() dto: UpdateTrainingDto,
+        @CurrentUser() user: AuthenticatedUser
+    ): Promise<AuthoredTrainingSummaryDto> {
+        return this.authoringService.updateTraining(trainingId, user.id, dto);
+    }
 
-	@Post("trainings/:trainingId/publish")
-	publishTraining(
-		@Param("trainingId") trainingId: string,
-		@CurrentUser() user: AuthenticatedUser
-	): Promise<AuthoredTrainingSummaryDto> {
-		return this.authoringService.publishTraining(trainingId, user.id);
-	}
+    @Post("trainings/:trainingId/publish")
+    publishTraining(
+        @Param("trainingId") trainingId: string,
+        @CurrentUser() user: AuthenticatedUser
+    ): Promise<AuthoredTrainingSummaryDto> {
+        return this.authoringService.publishTraining(trainingId, user.id);
+    }
 
-	// Overrides the controller-level @Roles("TRAINER") — only L&D users may
-	// permanently delete a training, regardless of who authored it.
-	@Roles("LD")
-	@Delete("trainings/:trainingId")
-	deleteTraining(@Param("trainingId") trainingId: string): Promise<void> {
-		return this.authoringService.deleteTraining(trainingId);
-	}
+    // Overrides the controller-level @Roles("TRAINER") — only L&D users may
+    // permanently delete a training, regardless of who authored it.
+    @Roles("LD")
+    @Delete("trainings/:trainingId")
+    deleteTraining(@Param("trainingId") trainingId: string): Promise<void> {
+        return this.authoringService.deleteTraining(trainingId);
+    }
 
-	@Post("trainings/:trainingId/chapters")
-	createChapter(
-		@Param("trainingId") trainingId: string,
-		@Body() dto: CreateChapterDto,
-		@CurrentUser() user: AuthenticatedUser
-	): Promise<ChapterDto> {
-		return this.authoringService.createChapter(trainingId, user.id, dto);
-	}
+    @Post("trainings/:trainingId/chapters")
+    createChapter(
+        @Param("trainingId") trainingId: string,
+        @Body() dto: CreateChapterDto,
+        @CurrentUser() user: AuthenticatedUser
+    ): Promise<ChapterDto> {
+        return this.authoringService.createChapter(trainingId, user.id, dto);
+    }
 
-	@Patch("chapters/:chapterId")
-	updateChapter(
-		@Param("chapterId") chapterId: string,
-		@Body() dto: UpdateChapterDto,
-		@CurrentUser() user: AuthenticatedUser
-	): Promise<ChapterDto> {
-		return this.authoringService.updateChapter(chapterId, user.id, dto);
-	}
+    @Patch("chapters/:chapterId")
+    updateChapter(
+        @Param("chapterId") chapterId: string,
+        @Body() dto: UpdateChapterDto,
+        @CurrentUser() user: AuthenticatedUser
+    ): Promise<ChapterDto> {
+        return this.authoringService.updateChapter(chapterId, user.id, dto);
+    }
 
-	@Delete("chapters/:chapterId")
-	deleteChapter(@Param("chapterId") chapterId: string, @CurrentUser() user: AuthenticatedUser): Promise<void> {
-		return this.authoringService.deleteChapter(chapterId, user.id);
-	}
+    @Delete("chapters/:chapterId")
+    deleteChapter(@Param("chapterId") chapterId: string, @CurrentUser() user: AuthenticatedUser): Promise<void> {
+        return this.authoringService.deleteChapter(chapterId, user.id);
+    }
 
-	@Post("chapters/:chapterId/lessons")
-	createLesson(
-		@Param("chapterId") chapterId: string,
-		@Body() dto: CreateLessonDto,
-		@CurrentUser() user: AuthenticatedUser
-	): Promise<LessonDto> {
-		return this.authoringService.createLesson(chapterId, user.id, dto);
-	}
+    @Post("chapters/:chapterId/lessons")
+    createLesson(
+        @Param("chapterId") chapterId: string,
+        @Body() dto: CreateLessonDto,
+        @CurrentUser() user: AuthenticatedUser
+    ): Promise<LessonDto> {
+        return this.authoringService.createLesson(chapterId, user.id, dto);
+    }
 
-	@Patch("lessons/:lessonId")
-	updateLesson(
-		@Param("lessonId") lessonId: string,
-		@Body() dto: UpdateLessonDto,
-		@CurrentUser() user: AuthenticatedUser
-	): Promise<LessonDto> {
-		return this.authoringService.updateLesson(lessonId, user.id, dto);
-	}
+    @Patch("lessons/:lessonId")
+    updateLesson(
+        @Param("lessonId") lessonId: string,
+        @Body() dto: UpdateLessonDto,
+        @CurrentUser() user: AuthenticatedUser
+    ): Promise<LessonDto> {
+        return this.authoringService.updateLesson(lessonId, user.id, dto);
+    }
 
-	@Delete("lessons/:lessonId")
-	deleteLesson(@Param("lessonId") lessonId: string, @CurrentUser() user: AuthenticatedUser): Promise<void> {
-		return this.authoringService.deleteLesson(lessonId, user.id);
-	}
+    @Delete("lessons/:lessonId")
+    deleteLesson(@Param("lessonId") lessonId: string, @CurrentUser() user: AuthenticatedUser): Promise<void> {
+        return this.authoringService.deleteLesson(lessonId, user.id);
+    }
+
+    @Get("trainings/:trainingId/quiz")
+    getQuiz(
+        @Param("trainingId") trainingId: string,
+        @CurrentUser() user: AuthenticatedUser
+    ): Promise<AuthoredQuizDto | null> {
+        return this.authoringService.getAuthoredQuiz(trainingId, user.id);
+    }
+
+    @Put("trainings/:trainingId/quiz")
+    upsertQuiz(
+        @Param("trainingId") trainingId: string,
+        @Body() dto: CreateQuizDto,
+        @CurrentUser() user: AuthenticatedUser
+    ): Promise<AuthoredQuizDto> {
+        return this.authoringService.upsertQuiz(trainingId, user.id, dto);
+    }
+
+    @Delete("trainings/:trainingId/quiz")
+    deleteQuiz(@Param("trainingId") trainingId: string, @CurrentUser() user: AuthenticatedUser): Promise<void> {
+        return this.authoringService.deleteQuiz(trainingId, user.id);
+    }
 }

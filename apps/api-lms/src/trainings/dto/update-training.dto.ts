@@ -1,5 +1,5 @@
 import type { UpdateTrainingRequest } from "@cerios/shared-types";
-import { IsOptional, IsString, MinLength } from "class-validator";
+import { IsBoolean, IsOptional, IsString, MinLength } from "class-validator";
 
 export class UpdateTrainingDto implements UpdateTrainingRequest {
 	@IsOptional()
@@ -18,4 +18,8 @@ export class UpdateTrainingDto implements UpdateTrainingRequest {
 	@IsOptional()
 	@IsString()
 	language?: string;
+
+	@IsOptional()
+	@IsBoolean()
+	gamificationEnabled?: boolean;
 }

@@ -1,10 +1,16 @@
-import type { CompleteLessonResponse, LessonDto, TrainingDetailDto } from "@cerios/shared-types";
+import type {
+	CompleteLessonResponse,
+	GamificationAwardResultDto,
+	LessonDto,
+	TrainingDetailDto,
+} from "@cerios/shared-types";
 import { useEffect, useMemo, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 
 import { apiClient } from "../api/client";
 import { useAuth } from "../auth/useAuth";
 import { AppHeader, Badge, Button } from "../design-system";
+import { GamificationToast } from "../gamification/GamificationToast";
 
 export function TrainingViewerPage(): React.JSX.Element {
 	const { user, logout } = useAuth();
@@ -14,6 +20,7 @@ export function TrainingViewerPage(): React.JSX.Element {
 	const [selectedLessonId, setSelectedLessonId] = useState<string | null>(null);
 	const [isSaving, setIsSaving] = useState(false);
 	const [isDeleting, setIsDeleting] = useState(false);
+	const [gamificationResult, setGamificationResult] = useState<GamificationAwardResultDto | null>(null);
 
 	useEffect(() => {
 		if (!trainingId) {
@@ -46,6 +53,7 @@ export function TrainingViewerPage(): React.JSX.Element {
 			const result = await apiClient.post<CompleteLessonResponse>(
 				`/trainings/${trainingId}/lessons/${selectedLesson.id}/complete`
 			);
+			setGamificationResult(result.gamification);
 			setTraining(previous => {
 				if (!previous) {
 					return previous;
@@ -131,6 +139,15 @@ export function TrainingViewerPage(): React.JSX.Element {
 							</ul>
 						</div>
 					))}
+					{training.hasQuiz && (
+						<div style={{ marginTop: 16 }}>
+							<Link to={`/trainings/${trainingId}/quiz`}>
+								<Button variant="cream" size="sm" arrow={false} style={{ width: "100%" }}>
+									{training.quizPassed ? "Toets bekijken (behaald)" : "Toets maken"}
+								</Button>
+							</Link>
+						</div>
+					)}
 				</nav>
 				<section className="viewer-content">
 					{selectedLesson ? (
@@ -152,6 +169,7 @@ export function TrainingViewerPage(): React.JSX.Element {
 					)}
 				</section>
 			</div>
+			<GamificationToast result={gamificationResult} onDismiss={() => setGamificationResult(null)} />
 		</main>
 	);
 }

@@ -3,6 +3,7 @@
 Mobile-first recreation of the cerios.com/nl homepage, built from the design-system components.
 
 **Screens / bands**
+
 - Sticky `NavBar` (wordmark + hamburger with green status dot)
 - Dark photographic **hero** — display headline, lead, green + cream CTAs
 - Light **content band** — "Softwarekwaliteit die werkt", editorial photo, navy + cream CTAs

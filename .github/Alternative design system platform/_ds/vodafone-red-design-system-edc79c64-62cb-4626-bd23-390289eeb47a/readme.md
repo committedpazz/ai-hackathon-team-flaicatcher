@@ -10,24 +10,25 @@ An inspired interpretation of Vodafone's marketing design language: a telecom su
 
 ## Index (root manifest)
 
-| Path | What it is |
-|---|---|
-| `styles.css` | Global entry point — `@import`s only. Consumers link this one file. |
-| `tokens/fonts.css` | Webfont loading (Inter substitute). |
-| `tokens/colors.css` | Color custom properties + semantic aliases. |
-| `tokens/typography.css` | Font family, weights, type-role sizes/leading/tracking. |
-| `tokens/spacing.css` | 4px-based spacing scale. |
-| `tokens/radius.css` | Radius scale (pills + 6px cards). |
-| `tokens/base.css` | Reset + `.vf-*` type-role utility classes. |
-| `components/core/` | Button, IconButton, Input, Badge, Card. |
-| `components/navigation/` | NavBar. |
-| `components/brand/` | SpeechmarkOrb. |
-| `foundations/` | Specimen cards for the Design System tab (Type, Colors, Spacing, Brand). |
-| `ui_kits/marketing/` | Interactive marketing homepage recreation. |
-| `assets/` | Speechmark orb SVG + placeholder photography. |
-| `SKILL.md` | Agent-Skill entry point for downstream use. |
+| Path                     | What it is                                                               |
+| ------------------------ | ------------------------------------------------------------------------ |
+| `styles.css`             | Global entry point — `@import`s only. Consumers link this one file.      |
+| `tokens/fonts.css`       | Webfont loading (Inter substitute).                                      |
+| `tokens/colors.css`      | Color custom properties + semantic aliases.                              |
+| `tokens/typography.css`  | Font family, weights, type-role sizes/leading/tracking.                  |
+| `tokens/spacing.css`     | 4px-based spacing scale.                                                 |
+| `tokens/radius.css`      | Radius scale (pills + 6px cards).                                        |
+| `tokens/base.css`        | Reset + `.vf-*` type-role utility classes.                               |
+| `components/core/`       | Button, IconButton, Input, Badge, Card.                                  |
+| `components/navigation/` | NavBar.                                                                  |
+| `components/brand/`      | SpeechmarkOrb.                                                           |
+| `foundations/`           | Specimen cards for the Design System tab (Type, Colors, Spacing, Brand). |
+| `ui_kits/marketing/`     | Interactive marketing homepage recreation.                               |
+| `assets/`                | Speechmark orb SVG + placeholder photography.                            |
+| `SKILL.md`               | Agent-Skill entry point for downstream use.                              |
 
 ### Components
+
 - **Button** (`components/core`) — pill CTA; `primary` / `outline-red` / `outline-dark` / `outline-on-dark`; sizes sm/md/lg.
 - **IconButton** (`components/core`) — circular white icon button.
 - **Input** (`components/core`) — text input with label/hint/invalid.
@@ -37,6 +38,7 @@ An inspired interpretation of Vodafone's marketing design language: a telecom su
 - **SpeechmarkOrb** (`components/brand`) — the brand's signature anchor mark.
 
 ### UI kits
+
 - **Marketing** (`ui_kits/marketing`) — hero → story band → red CTA → footer, with working search + account overlays.
 
 ---
@@ -57,7 +59,7 @@ An inspired interpretation of Vodafone's marketing design language: a telecom su
 ## Visual foundations
 
 - **Color.** One accent only — **Vodafone Red `#e60000`** — reserved for primary CTAs and the speechmark orb. Everything else is **ink `#25282b`**, white, and a small grayscale ramp (`#7e7e7e` body, `#bebebe` mute, `#f2f2f2` soft surface). No second accent, no semantic palette on the marketing surface (red doubles as error when needed).
-- **Type.** A single family carries the whole system. **Weight 800 + uppercase + `-1px` tracking = the hero voice**; **weight 300 at 40–48px = the calm secondary voice**. Body is weight 400 with neutral tracking. The contrast between 800 and 300 *is* the typographic story.
+- **Type.** A single family carries the whole system. **Weight 800 + uppercase + `-1px` tracking = the hero voice**; **weight 300 at 40–48px = the calm secondary voice**. Body is weight 400 with neutral tracking. The contrast between 800 and 300 _is_ the typographic story.
 - **Spacing.** 4px base unit; bands use 32px gutters; cards pad at 16px; inline gaps at 12px.
 - **Backgrounds.** Full-bleed **editorial photography** in the dark hero (real portraits/cities/cabling) at reduced opacity over ink — the only atmospheric effect. No gradients, no illustration, no texture/pattern. Content bands are flat white.
 - **Animation.** Minimal and quick. Hover = subtle `brightness()` shift on buttons / `opacity` lift on links (~150ms ease). No bounces, no decorative looping motion, no parallax. Slide/entrance motion is not part of the marketing system.

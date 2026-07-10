@@ -1,37 +1,37 @@
 :root {
-  /* Base palette */
-  --ce-navy-950: #141c33;   /* deepest navy — footer, pressed dark */
-  --ce-navy-900: #1b2547;   /* hero / dark band background */
-  --ce-navy-800: #223056;   /* dark pill buttons, icon glyphs */
-  --ce-navy-700: #253358;   /* ink — headings, wordmark, body on light */
-  --ce-green-400: #68e19c;  /* mint green — primary CTA, accents */
-  --ce-green-500: #4fd689;  /* green hover */
-  --ce-green-300: #8ceab4;  /* eyebrow text on dark */
-  --ce-cream: #efeee8;      /* soft/secondary pill button */
-  --ce-gray-50: #f4f4f1;    /* light content band */
-  --ce-white: #ffffff;
-  --ce-gray-600: #55607a;   /* body text on light */
-  --ce-gray-400: #9aa3b8;   /* muted text on light */
+	/* Base palette */
+	--ce-navy-950: #141c33; /* deepest navy — footer, pressed dark */
+	--ce-navy-900: #1b2547; /* hero / dark band background */
+	--ce-navy-800: #223056; /* dark pill buttons, icon glyphs */
+	--ce-navy-700: #253358; /* ink — headings, wordmark, body on light */
+	--ce-green-400: #68e19c; /* mint green — primary CTA, accents */
+	--ce-green-500: #4fd689; /* green hover */
+	--ce-green-300: #8ceab4; /* eyebrow text on dark */
+	--ce-cream: #efeee8; /* soft/secondary pill button */
+	--ce-gray-50: #f4f4f1; /* light content band */
+	--ce-white: #ffffff;
+	--ce-gray-600: #55607a; /* body text on light */
+	--ce-gray-400: #9aa3b8; /* muted text on light */
 
-  /* On-dark */
-  --ce-on-dark-body: rgba(255, 255, 255, 0.87);
-  --ce-on-dark-mute: rgba(255, 255, 255, 0.6);
-  --ce-divider-on-dark: rgba(255, 255, 255, 0.18);
-  --ce-divider-on-light: rgba(37, 51, 88, 0.14);
+	/* On-dark */
+	--ce-on-dark-body: rgba(255, 255, 255, 0.87);
+	--ce-on-dark-mute: rgba(255, 255, 255, 0.6);
+	--ce-divider-on-dark: rgba(255, 255, 255, 0.18);
+	--ce-divider-on-light: rgba(37, 51, 88, 0.14);
 
-  /* Atmosphere: the only decorative effect — a soft green glow in navy bands */
-  --ce-glow: radial-gradient(60% 50% at 85% 90%, rgba(104, 225, 156, 0.22) 0%, rgba(104, 225, 156, 0) 70%);
+	/* Atmosphere: the only decorative effect — a soft green glow in navy bands */
+	--ce-glow: radial-gradient(60% 50% at 85% 90%, rgba(104, 225, 156, 0.22) 0%, rgba(104, 225, 156, 0) 70%);
 
-  /* Semantic aliases */
-  --accent: var(--ce-green-400);
-  --accent-hover: var(--ce-green-500);
-  --accent-ink: var(--ce-navy-800);      /* text that sits ON the green */
-  --text-heading: var(--ce-navy-700);
-  --text-body: var(--ce-gray-600);
-  --text-eyebrow-on-dark: var(--ce-green-300);
-  --surface-page: var(--ce-white);
-  --surface-band: var(--ce-gray-50);
-  --surface-dark: var(--ce-navy-900);
-  --surface-card: var(--ce-white);
-  --surface-soft-button: var(--ce-cream);
+	/* Semantic aliases */
+	--accent: var(--ce-green-400);
+	--accent-hover: var(--ce-green-500);
+	--accent-ink: var(--ce-navy-800); /* text that sits ON the green */
+	--text-heading: var(--ce-navy-700);
+	--text-body: var(--ce-gray-600);
+	--text-eyebrow-on-dark: var(--ce-green-300);
+	--surface-page: var(--ce-white);
+	--surface-band: var(--ce-gray-50);
+	--surface-dark: var(--ce-navy-900);
+	--surface-card: var(--ce-white);
+	--surface-soft-button: var(--ce-cream);
 }
