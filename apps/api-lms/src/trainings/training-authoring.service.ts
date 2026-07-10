@@ -50,6 +50,19 @@ export class TrainingAuthoringService {
 		};
 	}
 
+	/**
+	 * L&D-only: permanently removes a training (and its chapters/lessons/progress
+	 * via cascading deletes) regardless of who authored it. No ownership check —
+	 * L&D has content-quality oversight across all trainings.
+	 */
+	async deleteTraining(trainingId: string): Promise<void> {
+		const training = await prisma.training.findUnique({ where: { id: trainingId } });
+		if (!training) {
+			throw new NotFoundException(`Training ${trainingId} was not found.`);
+		}
+		await prisma.training.delete({ where: { id: trainingId } });
+	}
+
 	async updateTraining(
 		trainingId: string,
 		userId: string,

@@ -57,7 +57,7 @@ export function AppHeader({ user, onLogout }: AppHeaderProps): React.JSX.Element
 							paddingLeft: 10,
 						}}
 					>
-						academy
+						e-cademy
 					</span>
 				</span>
 				<span style={{ display: "flex", alignItems: "center", gap: 16 }}>

@@ -50,6 +50,14 @@ export class TrainingAuthoringController {
 		return this.authoringService.publishTraining(trainingId, user.id);
 	}
 
+	// Overrides the controller-level @Roles("TRAINER") — only L&D users may
+	// permanently delete a training, regardless of who authored it.
+	@Roles("LD")
+	@Delete("trainings/:trainingId")
+	deleteTraining(@Param("trainingId") trainingId: string): Promise<void> {
+		return this.authoringService.deleteTraining(trainingId);
+	}
+
 	@Post("trainings/:trainingId/chapters")
 	createChapter(
 		@Param("trainingId") trainingId: string,

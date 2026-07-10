@@ -1,6 +1,6 @@
 import type { CompleteLessonResponse, LessonDto, TrainingDetailDto } from "@cerios/shared-types";
 import { useEffect, useMemo, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 
 import { apiClient } from "../api/client";
 import { useAuth } from "../auth/useAuth";
@@ -8,10 +8,12 @@ import { AppHeader, Badge, Button } from "../design-system";
 
 export function TrainingViewerPage(): React.JSX.Element {
 	const { user, logout } = useAuth();
+	const navigate = useNavigate();
 	const { trainingId } = useParams<{ trainingId: string }>();
 	const [training, setTraining] = useState<TrainingDetailDto | null>(null);
 	const [selectedLessonId, setSelectedLessonId] = useState<string | null>(null);
 	const [isSaving, setIsSaving] = useState(false);
+	const [isDeleting, setIsDeleting] = useState(false);
 
 	useEffect(() => {
 		if (!trainingId) {
@@ -68,6 +70,22 @@ export function TrainingViewerPage(): React.JSX.Element {
 		return <p>Loading...</p>;
 	}
 
+	const handleDeleteTraining = async (): Promise<void> => {
+		if (!trainingId) {
+			return;
+		}
+		if (!window.confirm(`Delete "${training.title}"? This cannot be undone.`)) {
+			return;
+		}
+		setIsDeleting(true);
+		try {
+			await apiClient.delete(`/authoring/trainings/${trainingId}`);
+			void navigate("/trainings");
+		} finally {
+			setIsDeleting(false);
+		}
+	};
+
 	return (
 		<main>
 			{user && <AppHeader user={user} onLogout={() => void logout()} />}
@@ -79,6 +97,18 @@ export function TrainingViewerPage(): React.JSX.Element {
 					<h2>{training.title}</h2>
 					<progress value={training.progressPercentage} max={100} />
 					<p className="progress-label">{training.progressPercentage}% complete</p>
+					{user?.roles.includes("LD") && (
+						<Button
+							variant="cream"
+							size="sm"
+							arrow={false}
+							disabled={isDeleting}
+							onClick={() => void handleDeleteTraining()}
+							style={{ color: "#d64545", marginBottom: 12 }}
+						>
+							{isDeleting ? "Deleting..." : "Delete training"}
+						</Button>
+					)}
 					{training.chapters.map(chapter => (
 						<div key={chapter.id}>
 							<h3>{chapter.title}</h3>

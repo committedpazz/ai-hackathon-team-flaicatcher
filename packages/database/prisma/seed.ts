@@ -16,6 +16,17 @@ async function main(): Promise<void> {
 		},
 	});
 
+	const ldUser = await prisma.user.upsert({
+		where: { username: "ld1" },
+		update: { passwordHash, roles: ["LD"] },
+		create: {
+			username: "ld1",
+			passwordHash,
+			roles: ["LD"],
+		},
+	});
+	console.log(`Seeded L&D user: username=ld1 password=Passw0rd! (id=${ldUser.id})`);
+
 	const existingTraining = await prisma.training.findFirst({
 		where: { title: "Testautomatisering Basis" },
 	});

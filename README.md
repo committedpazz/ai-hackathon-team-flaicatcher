@@ -1,4 +1,4 @@
-# Cerios Hackathon — E-learning Platform
+# Cerios E-cademy
 
 TypeScript monorepo: NestJS API, React (Vite) portal, Prisma + PostgreSQL.
 
@@ -43,6 +43,12 @@ Log in with the seeded learner account:
 This account has both the `LEARNER` and `TRAINER` roles (hybrid role, per the
 spec): use "My trainings" to view/complete trainings as a learner, or "My
 authored trainings" to create and edit trainings as a trainer.
+
+There's also a dedicated L&D account for testing content-oversight actions
+(currently: deleting any training, regardless of who authored it):
+
+- **Username:** `ld1`
+- **Password:** `Passw0rd!`
 
 ## Local development (hot reload)
 
