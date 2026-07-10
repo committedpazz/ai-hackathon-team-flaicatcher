@@ -1,0 +1,87 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  ADMIN
+  TRAINER
+  LEARNER
+}
+
+enum TrainingStatus {
+  DRAFT
+  PUBLISHED
+  ARCHIVED
+}
+
+enum LessonContentType {
+  TEXT
+}
+
+model User {
+  id                  String               @id @default(cuid())
+  username            String               @unique
+  passwordHash        String
+  roles               Role[]
+  createdAt           DateTime             @default(now())
+  deactivatedAt       DateTime?
+  passwordResetTokens PasswordResetToken[]
+  lessonProgress      LessonProgress[]
+}
+
+model PasswordResetToken {
+  id        String    @id @default(cuid())
+  userId    String
+  user      User      @relation(fields: [userId], references: [id])
+  token     String    @unique
+  expiresAt DateTime
+  usedAt    DateTime?
+  createdAt DateTime  @default(now())
+}
+
+model Training {
+  id          String         @id @default(cuid())
+  title       String
+  description String
+  status      TrainingStatus @default(DRAFT)
+  level       String
+  language    String
+  chapters    Chapter[]
+  createdAt   DateTime       @default(now())
+}
+
+model Chapter {
+  id         String   @id @default(cuid())
+  trainingId String
+  training   Training @relation(fields: [trainingId], references: [id])
+  title      String
+  order      Int
+  lessons    Lesson[]
+}
+
+model Lesson {
+  id              String            @id @default(cuid())
+  chapterId       String
+  chapter         Chapter           @relation(fields: [chapterId], references: [id])
+  title           String
+  order           Int
+  contentType     LessonContentType @default(TEXT)
+  contentBody     String
+  lessonProgress  LessonProgress[]
+}
+
+model LessonProgress {
+  id          String   @id @default(cuid())
+  userId      String
+  user        User     @relation(fields: [userId], references: [id])
+  lessonId    String
+  lesson      Lesson   @relation(fields: [lessonId], references: [id])
+  completedAt DateTime @default(now())
+
+  @@unique([userId, lessonId])
+}

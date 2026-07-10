@@ -4,7 +4,7 @@ applyTo: "apps/api-*/**"
 ---
 # Backend Guidance
 
-- Follow NestJS structure: module, controller, service, and DTO boundaries.
+- Follow NextJS structure: module, controller, service, and DTO boundaries.
 - Keep controllers thin and place business logic in services.
 - Reuse shared types and shared helpers where that reduces duplication without hiding behavior.
 - Keep auth, validation, and persistence concerns separate.

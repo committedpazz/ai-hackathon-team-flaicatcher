@@ -1,0 +1,27 @@
+{
+	"name": "@cerios/database",
+	"version": "0.0.0",
+	"private": true,
+	"main": "./dist/index.js",
+	"types": "./dist/index.d.ts",
+	"exports": {
+		".": {
+			"types": "./dist/index.d.ts",
+			"default": "./dist/index.js"
+		}
+	},
+	"scripts": {
+		"build": "tsc -b",
+		"prisma:generate": "prisma generate",
+		"prisma:migrate": "prisma migrate dev",
+		"prisma:seed": "tsx prisma/seed.ts"
+	},
+	"dependencies": {
+		"@prisma/client": "^6.16.3",
+		"bcryptjs": "^3.0.2"
+	},
+	"devDependencies": {
+		"prisma": "^6.16.3",
+		"tsx": "^4.20.6"
+	}
+}
