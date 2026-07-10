@@ -8,7 +8,7 @@ async function main(): Promise<void> {
 
     const learner = await prisma.user.upsert({
         where: { username: "learner1" },
-        update: {},
+        update: { passwordHash },
         create: {
             username: "learner1",
             passwordHash,
