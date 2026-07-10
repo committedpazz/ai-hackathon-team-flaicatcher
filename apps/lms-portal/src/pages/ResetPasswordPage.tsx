@@ -39,6 +39,7 @@ export function ResetPasswordPage(): React.JSX.Element {
 						minLength={8}
 						value={newPassword}
 						onChange={event => setNewPassword(event.target.value)}
+						autoComplete="new-password"
 						required
 					/>
 				</label>
