@@ -7,10 +7,55 @@ TypeScript monorepo: NestJS API, React (Vite) portal, Prisma + PostgreSQL.
 
 ## Prerequisites
 
-- Node.js 24+
-- Docker Desktop (running)
+- Docker Desktop (running) — on Windows, Docker Desktop with the WSL2 backend
+  works too
 
-## First-time setup
+## Quick start (single command)
+
+```bash
+cp .env.example .env   # optional — defaults already work out of the box
+npm run docker:up      # docker compose up -d --build
+```
+
+That's it — this single command builds and starts Postgres, the API, and the
+portal, and the API container automatically applies migrations and seeds
+sample data on startup. Once the containers are healthy, open
+http://localhost:5173.
+
+> On Windows without Docker Desktop (Docker Engine installed directly in a
+> WSL2 distro instead), run the same commands from inside that WSL distro
+> (`wsl` then `cd` to the repo, or
+> `wsl -e bash -lc "cd /mnt/c/path/to/repo && npm run docker:up"`) — otherwise
+> the `docker` CLI won't be on your Windows `PATH`.
+
+Other useful commands:
+
+```bash
+npm run docker:logs   # tail logs from all containers
+npm run docker:down   # stop and remove the containers
+```
+
+Log in with the seeded learner account:
+
+- **Username:** `learner1`
+- **Password:** `Passw0rd!`
+
+This account has both the `LEARNER` and `TRAINER` roles (hybrid role, per the
+spec): use "My trainings" to view/complete trainings as a learner, or "My
+authored trainings" to create and edit trainings as a trainer.
+
+## Local development (hot reload)
+
+The Docker quick start above is great for just running the app, but for
+active development you'll want hot reload. This uses Node directly instead
+of containers:
+
+### Prerequisites
+
+- Node.js 24+
+- Docker Desktop (running) — only used here to run Postgres
+
+### First-time setup
 
 ```bash
 npm install
@@ -20,8 +65,8 @@ cp packages/database/.env.example packages/database/.env
 cp apps/api-lms/.env.example apps/api-lms/.env
 cp apps/lms-portal/.env.example apps/lms-portal/.env
 
-# Start local Postgres
-docker compose up -d
+# Start local Postgres only (not the api/portal containers)
+docker compose up -d postgres
 
 # Create the schema and seed sample data
 npm run db:migrate
@@ -31,7 +76,7 @@ npm run db:seed
 > On Windows, if `cp` isn't available in your shell, use `copy` (cmd) or
 > `Copy-Item` (PowerShell) instead.
 
-## Running the app
+### Running the app
 
 Run these in two separate terminals:
 
@@ -40,35 +85,32 @@ npm run dev:api      # NestJS API on http://localhost:3000
 npm run dev:portal   # React portal on http://localhost:5173
 ```
 
-Open http://localhost:5173 and log in with the seeded learner account:
-
-- **Username:** `learner1`
-- **Password:** `Passw0rd!`
-
-This account has both the `LEARNER` and `TRAINER` roles (hybrid role, per the
-spec): use "My trainings" to view/complete trainings as a learner, or "My
-authored trainings" to create and edit trainings as a trainer.
+Open http://localhost:5173 and log in as described above.
 
 ## Project structure
 
 ```
 apps/
-  api-lms/        NestJS API (auth, trainings)
-  lms-portal/     React + Vite frontend
+  api-lms/        NestJS API (auth, trainings) — has its own Dockerfile
+  lms-portal/     React + Vite frontend — has its own Dockerfile + nginx.conf
 packages/
   database/       Prisma schema, migrations, seed script
   shared-types/   DTOs/types shared between api-lms and lms-portal
-docker-compose.yml  Local Postgres for development
+docker-compose.yml  Postgres + api + portal, for the single-command quick start
+.env.example        Single env file consumed by docker-compose.yml
 ```
 
 ## Common scripts (run from the repo root)
 
 | Script                            | Purpose                                                     |
 | --------------------------------- | ----------------------------------------------------------- |
+| `npm run docker:up`               | Build and start Postgres + API + portal in one command      |
+| `npm run docker:down`             | Stop and remove the Docker containers                       |
+| `npm run docker:logs`             | Tail logs from all Docker containers                        |
 | `npm run compile`                 | Type-check the whole monorepo (`tsc --build`)               |
 | `npm run lint`                    | Lint the whole monorepo (oxlint, type-aware)                |
 | `npm run format` / `format:check` | Format / check formatting (oxfmt)                           |
-| `npm run dev:api` / `dev:portal`  | Start the API / portal dev servers                          |
+| `npm run dev:api` / `dev:portal`  | Start the API / portal dev servers (local dev, hot reload)  |
 | `npm run db:migrate`              | Apply Prisma migrations (prompts for a name on new changes) |
 | `npm run db:seed`                 | Seed the database with sample data                          |
 
@@ -79,6 +121,7 @@ Run `npm run lint` and `npm run compile` after any meaningful change — see
 
 - Forgot-password doesn't send real email yet: the reset link is logged to the
   `api-lms` server console instead (hackathon shortcut, see
-  `apps/api-lms/src/auth/auth.service.ts`).
+  `apps/api-lms/src/auth/auth.service.ts`). Use `npm run docker:logs` (or
+  `docker compose logs -f api`) to find it when running via Docker.
 - Auth uses a JWT stored in an httpOnly cookie (not visible to JS), scoped to
-  `CORS_ORIGIN` in `apps/api-lms/.env`.
+  `CORS_ORIGIN`.

@@ -12,6 +12,7 @@
 	},
 	"scripts": {
 		"build": "tsc -b",
+		"prisma:deploy": "prisma migrate deploy",
 		"prisma:generate": "prisma generate",
 		"prisma:migrate": "prisma migrate dev",
 		"prisma:seed": "tsx prisma/seed.ts"
