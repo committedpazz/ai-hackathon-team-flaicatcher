@@ -10,14 +10,14 @@ import { LocalStrategy } from "./strategies/local.strategy";
 const ACCESS_TOKEN_EXPIRY = "1d";
 
 @Module({
-	imports: [
-		PassportModule,
-		JwtModule.register({
-			secret: process.env.JWT_SECRET ?? "dev-secret-change-me",
-			signOptions: { expiresIn: ACCESS_TOKEN_EXPIRY },
-		}),
-	],
-	controllers: [AuthController],
-	providers: [AuthService, LocalStrategy, JwtStrategy],
+    imports: [
+        PassportModule,
+        JwtModule.register({
+            secret: process.env.JWT_SECRET ?? "dev-secret-change-me",
+            signOptions: { expiresIn: ACCESS_TOKEN_EXPIRY },
+        }),
+    ],
+    controllers: [AuthController],
+    providers: [AuthService, LocalStrategy, JwtStrategy],
 })
-export class AuthModule {}
+export class AuthModule { }
